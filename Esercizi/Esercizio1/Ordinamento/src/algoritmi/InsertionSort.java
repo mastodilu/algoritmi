@@ -8,30 +8,67 @@
 package algoritmi;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  *
  * @author MatteoDiLucchio
  */
 public class InsertionSort<T extends Comparable<T>>{
-    private BufferedReader bf;
+    private BufferedReader br;
+    private FileReader fr;
+    /**
+     * path del file da aprire
+     */
+    private String path;
     
     
     /**
      * costruttore
+     * @param path del file da aprire
      */
-    public InsertionSort(){}
-    
-    /**
-     * Costruttore
-     * @param bf file reader
-     */
-    public InsertionSort(BufferedReader bf){
-        this.bf = bf;
+    public InsertionSort(String PATH){
+        this.path = PATH;
+        this.open();
+        
+        System.out.println("File " + PATH + " opened correctly.");
     }
 
-    public void sort() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * esegue l'ordinamento sul file
+     */
+    public void sort() throws IOException{
+        String currentLine;
+        while ((currentLine = br.readLine()) != null) {
+            System.out.println(currentLine);
+        }
+    }
+    
+    /**
+     * apre lo stream per la lettura del file
+     */
+    private void open(){
+        try{
+            fr = new FileReader(path);
+            br = new BufferedReader(fr);
+        }catch(FileNotFoundException e){
+            System.err.println("Unable to open " + path);
+            this.close();
+        }
+    }
+    
+    /**
+     * chiude lo stream per la lettura del file
+     */
+    public void close(){
+        try{
+            br.close();
+            fr.close();
+        }catch(IOException e){
+            System.err.println("Unable to close " + path);
+        }
     }
     
 }
