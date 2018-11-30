@@ -32,14 +32,6 @@ public class MainClass {
      */
     public static void main(String[] args) {
         
-//            al = new ArrayList<Long>(Arrays.asList(1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L));
-//            al = new ArrayList<Long>(Arrays.asList(5L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,9L,8L));
-//            al = new ArrayList<Long>(Arrays.asList(1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L));
-//            al = new ArrayList<Long>(Arrays.asList(10L,2L,2L,3L,1L,4L));
-//            al = new ArrayList<Long>(Arrays.asList(2L,4L,1L,3L));
-//            al = new ArrayList<Long>(Arrays.asList(5L,10L,2L,2L,3L,1L,4L,1L,2L,20L,2L,3L,3L,4L,4L,5L,6L,9L,8L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L,10L,2L,2L,3L,1L,4L));
-
-
         al = new ArrayList<Long>();
         open();
         read();
