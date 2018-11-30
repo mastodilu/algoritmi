@@ -6,7 +6,6 @@
  * ordinato correttamente.
  */
 package algoritmi;
-import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -18,74 +17,30 @@ public class InsertionSort<T extends Comparable>{
      * array disordinato
      */
     ArrayList<T> array;
-    /**
-     * array che contiene solo elementi ordinati
-     */
-    ArrayList<T> sorted;
     
     /**
      * costruttore
-     * @param path del file da aprire
+     * @param path percorso del file da aprire
      */
     public InsertionSort(ArrayList<T> array){
         this.array = array;
-//        sorted = new ArrayList<T>();
-//        //aggiunge il primo elemento all'array ordinato come base di partenza
-//        sorted.add(array.get(0));
-//        array.remove(0);
     }
-
-    /**
-     * esegue l'ordinamento sul file
-     */
+    
+    
     public void sort(){
-        System.out.println("Sorting started");
-        while(this.array.size() > 0){
-            this.addToOrdered(this.array.get(0));
-            this.array.remove(0);
-        }
-    }
-    
-    /**
-     * aggiunge il parametro passato alla giusta posizione dell'array ordinato
-     * @param elem elemento da aggiungere nella giusta posizione
-     */
-    private void addToOrdered(T elem){
-        boolean added = false;
-        int i;
-        for(i = 0; i < this.sorted.size(); i++){
-            switch(elem.compareTo(this.sorted.get(i))){
-                case -1:
-                case 0:{
-                    //elem è minore di
-                    this.sorted.add(i, elem);
-                    added = true;
-                    break;
-                }
-                case 1: //elem è maggiore di
-                default:{
-                }
-            }
-        }
-        if(!added){
-            this.sorted.add(i, elem);
-        }
-    }
-    
-    
-    public void testSort(){
         if(this.array.size() < 2){
             return;
         }
+        
     	int minIndex = 0;
         //comincia a riordinare partendo dal secondo elemento dell'array
         for(int i = 1; i < this.array.size(); i++){
-            testRecursiveSort(i, minIndex, i-1 );
+            recursiveSort(i, minIndex, i-1 );
         }
     }
     
 
-    private void testRecursiveSort(int indexCurrentItem, int minIndex, int maxIndex){
+    private void recursiveSort(int indexCurrentItem, int minIndex, int maxIndex){
         int midIndex = (int)((minIndex + maxIndex)/2); //prende la parte intera
         T currentItem = this.array.get(indexCurrentItem);
         T midItem = this.array.get(midIndex);
@@ -104,21 +59,21 @@ public class InsertionSort<T extends Comparable>{
         }
         else switch(currentItem.compareTo(midItem)){
             case -1:{
-                this.printArray(indexCurrentItem);
-                System.out.println("case -1 min " + minIndex + " mid " + midIndex + " max " + maxIndex + " item " + indexCurrentItem);
+//                this.printArray(indexCurrentItem);
+//                System.out.println("case -1 min " + minIndex + " mid " + midIndex + " max " + maxIndex + " item " + indexCurrentItem);
                 //l'elemento da ordinare e' minore di quello in posizione media. Confronto la parte a sinistra dell'indice medio
-                testRecursiveSort(indexCurrentItem, minIndex, midIndex-1);
+                recursiveSort(indexCurrentItem, minIndex, midIndex-1);
                 break;
             }
             case 0:{ //caso gestito negli if-else iniziali
                 break;
             }
             case 1:{
-                this.printArray(indexCurrentItem);
-                System.out.println("case +1 min " + minIndex + " mid " + midIndex + " max " + maxIndex + " item " + indexCurrentItem);
+//                this.printArray(indexCurrentItem);
+//                System.out.println("case +1 min " + minIndex + " mid " + midIndex + " max " + maxIndex + " item " + indexCurrentItem);
                 //l'elemento da ordinare e' maggiore di quello in posizione media. Confronto la parte a destra dell'indice medio
                 //se confronto due indici consecutivi mi blocco e confronto, altrimenti continuo le chiamate ricorsive
-                testRecursiveSort(indexCurrentItem, midIndex+1, maxIndex);
+                recursiveSort(indexCurrentItem, midIndex+1, maxIndex);
                 break;
             }
             default:{
@@ -129,6 +84,11 @@ public class InsertionSort<T extends Comparable>{
         }//-switch
     }
 
+    
+    /**
+     * stampa l'array in una riga
+     * @param flagIndex indice del primo elemento della parte non ordinata
+     */
     private void printArray(int flagIndex) {
         for(int i = 0; i < this.array.size(); i++){
             System.out.print(this.array.get(i).toString() + " ");

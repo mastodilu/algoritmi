@@ -41,7 +41,8 @@ public class MainClass {
 //            al = new ArrayList<Long>(Arrays.asList(2L,4L,1L,3L));
             al = new ArrayList<Long>(Arrays.asList(5L,10L,2L,2L,3L,1L,4L,1L,2L,20L,2L,3L,3L,4L,4L,5L,6L,9L,8L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L,10L,2L,2L,3L,1L,4L));
 
-        }else{//legge il file infinito di long
+
+        }else{//legge il file enorme
             al = new ArrayList<Long>();
             open();
             read();
@@ -59,7 +60,7 @@ public class MainClass {
      */
     private static void printArray(){
         for (int i = 0; i < al.size(); i++){
-            System.out.print(al.get(i) + " ");
+            System.out.println(al.get(i) + " ");
         }
         System.out.println();
 
@@ -108,12 +109,11 @@ public class MainClass {
     }
 
 
-	/**
-	  * avvia l'algoritmo di ordinamento
-	  */
+    /**
+      * avvia l'algoritmo di ordinamento
+      */
     private static void sort() {
         InsertionSort<Long> is = new InsertionSort<Long>(al);
-//        is.sort();
-        is.testSort();
+        is.sort();
     }
 }
