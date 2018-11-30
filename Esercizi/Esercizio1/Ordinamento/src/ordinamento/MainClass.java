@@ -23,18 +23,16 @@ public class MainClass {
      */
     private static final String PATH = "C:\\Users\\masto\\Documents\\MieiProgetti\\Algoritmi_file_enormi\\Esercizio1\\integers.csv";
 //    private static final String PATH = "C:\\Users\\MatteoDiLucchio\\Documents\\Algoritmi\\Algoritmi file enormi\\Esercizio1\\integers.csv";
-    private static BufferedReader br;
-    private static FileReader fr;
-    private static ArrayList<Long> al;
+    static BufferedReader br;
+    static FileReader fr;
+    static ArrayList<Long> al;
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
-        boolean shortTest = false;
-        if(shortTest){ //test con un array corto
-            al = new ArrayList<Long>(Arrays.asList(1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L));
+//            al = new ArrayList<Long>(Arrays.asList(1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L));
 //            al = new ArrayList<Long>(Arrays.asList(5L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,9L,8L));
 //            al = new ArrayList<Long>(Arrays.asList(1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L));
 //            al = new ArrayList<Long>(Arrays.asList(10L,2L,2L,3L,1L,4L));
@@ -42,20 +40,16 @@ public class MainClass {
 //            al = new ArrayList<Long>(Arrays.asList(5L,10L,2L,2L,3L,1L,4L,1L,2L,20L,2L,3L,3L,4L,4L,5L,6L,9L,8L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L,10L,2L,2L,3L,1L,4L));
 
 
-        }else{//legge il file enorme
-            al = new ArrayList<Long>();
-            open();
-            read();
-            close();
-        }
+        al = new ArrayList<Long>();
+        open();
+        read();
+        close();
         
         System.out.println(al.size() + " elemnts in the array");
         System.out.println("Start sorting");
         sort();
         System.out.println("Done sorting");
         
-        if(shortTest)
-            printArray();
     }
     
     
@@ -64,7 +58,7 @@ public class MainClass {
      */
     private static void printArray(){
         for (int i = 0; i < al.size(); i++){
-            System.out.println(al.get(i) + " ");
+            System.out.print(al.get(i) + ", ");
         }
         System.out.println();
 
