@@ -33,9 +33,11 @@ public class InsertionSort<T extends Comparable>{
         }
         
     	int minIndex = 0;
+        
         //comincia a riordinare partendo dal secondo elemento dell'array
         for(int i = 1; i < this.array.size(); i++){
             recursiveSort(i, minIndex, i-1 );
+            System.out.println(i + " done...");
         }
     }
     
@@ -45,17 +47,14 @@ public class InsertionSort<T extends Comparable>{
         T currentItem = this.array.get(indexCurrentItem);
         T midItem = this.array.get(midIndex);
         
-        if(currentItem.compareTo(this.array.get(minIndex)) < 0){ // minore del minimo
-            this.array.remove(indexCurrentItem);
-            this.array.add(minIndex, currentItem);
+        if(currentItem.compareTo(this.array.get(minIndex)) < 0){ // minore del MINIMO
+            swapInRange(minIndex, indexCurrentItem);
         }
-        else if(currentItem.compareTo(this.array.get(maxIndex)) > 0){ // maggiore del massimo
-            this.array.remove(indexCurrentItem);
-            this.array.add(maxIndex + 1, currentItem);
+        else if(currentItem.compareTo(this.array.get(maxIndex)) > 0){ // maggiore del MASSIMO
+            swapInRange(maxIndex + 1, indexCurrentItem);
         }
         else if(currentItem.compareTo(midItem) == 0){ // uguale al medio
-            this.array.remove(indexCurrentItem);
-            this.array.add(midIndex, currentItem);
+            swapInRange(midIndex, indexCurrentItem);
         }
         else switch(currentItem.compareTo(midItem)){
             case -1:{
@@ -98,6 +97,26 @@ public class InsertionSort<T extends Comparable>{
         System.out.println();
     }
     
+    
+    /**
+     * equivale ad un inserimento dell'elemento di indice 'last' nell'indice 'first'
+     * evitando ridimensionamenti dell'array list
+     * 
+     * shifta a destra di una posizione tutti gli elementi a destra
+     * dell'indice 'first' quindi copia l'elemento di indice 'last'
+     * nell'elemento di indice 'first'
+     * 
+     * @param first indice del primo elemento da shiftare
+     * @param last indice dell'ultimo elemento da shiftare
+     */
+    private void swapInRange(int first, int last){
+        //fixme non funziona
+        T backup = this.array.get(last);
+        for(int i = last; i > first; i--){
+            this.array.set(i, this.array.get(i-1));
+        }
+        this.array.set(first, backup);
+    }
     
     
 }

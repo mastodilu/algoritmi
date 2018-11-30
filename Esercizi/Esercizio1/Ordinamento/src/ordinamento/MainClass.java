@@ -32,14 +32,14 @@ public class MainClass {
      */
     public static void main(String[] args) {
         
-        boolean shortTest = true;
+        boolean shortTest = false;
         if(shortTest){ //test con un array corto
-//            al = new ArrayList<Long>(Arrays.asList(1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L));
+            al = new ArrayList<Long>(Arrays.asList(1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L));
 //            al = new ArrayList<Long>(Arrays.asList(5L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,9L,8L));
 //            al = new ArrayList<Long>(Arrays.asList(1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L));
 //            al = new ArrayList<Long>(Arrays.asList(10L,2L,2L,3L,1L,4L));
 //            al = new ArrayList<Long>(Arrays.asList(2L,4L,1L,3L));
-            al = new ArrayList<Long>(Arrays.asList(5L,10L,2L,2L,3L,1L,4L,1L,2L,20L,2L,3L,3L,4L,4L,5L,6L,9L,8L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L,10L,2L,2L,3L,1L,4L));
+//            al = new ArrayList<Long>(Arrays.asList(5L,10L,2L,2L,3L,1L,4L,1L,2L,20L,2L,3L,3L,4L,4L,5L,6L,9L,8L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L,1L,2L,2L,2L,3L,3L,4L,4L,5L,6L,8L,11L,1L,10L,2L,2L,3L,1L,4L));
 
 
         }else{//legge il file enorme
@@ -49,9 +49,13 @@ public class MainClass {
             close();
         }
         
-        System.out.println(al.size() + " elementi da riordinare");
+        System.out.println(al.size() + " elemnts in the array");
+        System.out.println("Start sorting");
         sort();
-        printArray();
+        System.out.println("Done sorting");
+        
+        if(shortTest)
+            printArray();
     }
     
     
