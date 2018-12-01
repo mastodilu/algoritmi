@@ -58,8 +58,6 @@ public class InsertionSort<T extends Comparable>{
         }
         else switch(currentItem.compareTo(midItem)){
             case -1:{
-//                this.printArray(indexCurrentItem);
-//                System.out.println("case -1 min " + minIndex + " mid " + midIndex + " max " + maxIndex + " item " + indexCurrentItem);
                 //l'elemento da ordinare e' minore di quello in posizione media. Confronto la parte a sinistra dell'indice medio
                 recursiveSort(indexCurrentItem, minIndex, midIndex-1);
                 break;
@@ -68,15 +66,12 @@ public class InsertionSort<T extends Comparable>{
                 break;
             }
             case 1:{
-//                this.printArray(indexCurrentItem);
-//                System.out.println("case +1 min " + minIndex + " mid " + midIndex + " max " + maxIndex + " item " + indexCurrentItem);
                 //l'elemento da ordinare e' maggiore di quello in posizione media. Confronto la parte a destra dell'indice medio
                 //se confronto due indici consecutivi mi blocco e confronto, altrimenti continuo le chiamate ricorsive
                 recursiveSort(indexCurrentItem, midIndex+1, maxIndex);
                 break;
             }
             default:{
-                //...
                 System.err.println("You shouldn't read this.");
                 break;
             }

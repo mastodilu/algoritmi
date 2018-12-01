@@ -25,6 +25,9 @@ public class MainClass {
 //    private static final String PATH = "C:\\Users\\MatteoDiLucchio\\Documents\\Algoritmi\\Algoritmi file enormi\\Esercizio1\\integers.csv";
     static BufferedReader br;
     static FileReader fr;
+    /**
+     * arraylist dei numeri letti da file
+     */
     static ArrayList<Long> al;
     
     /**
