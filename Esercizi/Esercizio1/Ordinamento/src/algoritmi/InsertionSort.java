@@ -18,10 +18,7 @@ public class InsertionSort<T extends Comparable>{
      */
     ArrayList<T> array;
     
-    /**
-     * costruttore
-     * @param path percorso del file da aprire
-     */
+
     public InsertionSort(ArrayList<T> array){
         this.array = array;
     }
@@ -105,7 +102,6 @@ public class InsertionSort<T extends Comparable>{
      * @param last indice dell'ultimo elemento da shiftare
      */
     private void swapInRange(int first, int last){
-        //fixme non funziona
         T backup = this.array.get(last);
         for(int i = last; i > first; i--){
             this.array.set(i, this.array.get(i-1));
