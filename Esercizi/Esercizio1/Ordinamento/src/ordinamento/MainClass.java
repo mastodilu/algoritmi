@@ -121,6 +121,6 @@ public class MainClass {
       */
     private static void mergeSort() {
         MergeSort<Long> is = new MergeSort<Long>(al);
-        is.sort();
+        is.sortAscending();
     }
 }

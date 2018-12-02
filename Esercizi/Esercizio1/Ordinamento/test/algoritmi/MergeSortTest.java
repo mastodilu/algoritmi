@@ -38,18 +38,33 @@ public class MergeSortTest {
         ArrayList<Long> al;
         ArrayList<Long> result;
         
-        //caso n.1 - normale
+        //caso n.1 - ordine crescente
         al = new ArrayList<Long>(Arrays.asList(     5L,2L,3L,1L));
         result = new ArrayList<Long>(Arrays.asList( 1L,2L,3L,5L));
         MergeSort instance = new MergeSort(al);
-        instance.sort();
+        instance.sortAscending();
         checkLong(al, result);
         
-        //caso n.2
-        ArrayList<String> sss = new ArrayList<String>(Arrays.asList( "AA", "CC", "BB"));
-        ArrayList<String> rrr = new ArrayList<String>(Arrays.asList( "AA","BB","CC"));
+        //caso n.2 - ordine crescente
+        ArrayList<String> sss = new ArrayList<String>(Arrays.asList( "AAAA","AA","CC","BB"));
+        ArrayList<String> rrr = new ArrayList<String>(Arrays.asList( "AA","AAAA","BB","CC"));
         instance = new MergeSort(sss);
-        instance.sort();
+        instance.sortAscending();
+        checkString(sss, rrr);
+        
+        
+        //caso n.3 - ordine decrescente
+        al = new ArrayList<Long>(Arrays.asList(     5L,2L,3L,1L));
+        result = new ArrayList<Long>(Arrays.asList( 5L,3L,2L,1L));
+        instance = new MergeSort(al);
+        instance.sortDescending();
+        checkLong(al, result);
+        
+        //caso n.4 - ordine cderescente
+        sss = new ArrayList<String>(Arrays.asList( "AAAA","AA","CC","BB"));
+        rrr = new ArrayList<String>(Arrays.asList( "CC","BB","AAAA","AA"));
+        instance = new MergeSort(sss);
+        instance.sortDescending();
         checkString(sss, rrr);
     }
     
