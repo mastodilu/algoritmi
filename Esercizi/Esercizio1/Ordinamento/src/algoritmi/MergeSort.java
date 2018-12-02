@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class MergeSort<T extends Comparable>{
     
     /**
-     * array disordinato
+     * array disordinato da riordinare
      */
     ArrayList<T> array;
     
@@ -39,12 +39,12 @@ public class MergeSort<T extends Comparable>{
     
     
     /**
-     * dimezza l'array ricorsivamente
+     * dimezza l'array ricorsivamente e volta per volta chiama il metodo mergesort
+     * sulla prima e sulla seconda meta', per poi unirle in modo ordinato col metodo merge
      * @param minIndex
      * @param maxIndex 
      */
     private void mergeSort(int minIndex, int maxIndex){
-        System.out.println("mergesort minIndex " + minIndex + " maxIndex " + maxIndex);
         int medIndex = (int)( (minIndex + maxIndex) / 2);
         int diff = maxIndex - minIndex; // diff > 0 se c'e' piu' di un elemento nel range valutato
         if(diff > 0){
@@ -72,7 +72,6 @@ public class MergeSort<T extends Comparable>{
      * @param maxIndex indice finale del secondo array
      */
     private void merge(int minIndex, int medIndex, int maxIndex){
-        System.out.println("merge minIndex " + minIndex + " maxIndex " + maxIndex);
         int leftIndex, rightIndex;
         leftIndex = minIndex;
         boolean stop;

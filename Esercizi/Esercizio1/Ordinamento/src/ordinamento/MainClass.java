@@ -36,17 +36,11 @@ public class MainClass {
      */
     public static void main(String[] args) {
         
-        //merge sort
-//        al = new ArrayList<Long>(Arrays.asList(10L,5L,11L,12L,3L));
-//        al = new ArrayList<Long>(Arrays.asList(10L,5L,11L,12L,10L,5L,11L,12L,3L));
-        al = new ArrayList<Long>(Arrays.asList(5L,2L,3L,1L));
-        
-        
         //lettura da file
-//        al = new ArrayList<Long>();
-//        open();
-//        read();
-//        close();
+        al = new ArrayList<Long>();
+        open();
+        read();
+        close();
 
         System.out.println(al.size() + " elemnts in the array");
         System.out.println("Start sorting");
