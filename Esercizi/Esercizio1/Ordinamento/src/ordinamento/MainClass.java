@@ -41,14 +41,13 @@ public class MainClass {
         read();
         close();
 
-        System.out.println(al.size() + " elemnts in the array");
+        System.out.println(al.size() + " elements in the array");
         System.out.println("Start sorting");
         
         insertionSort();
 //        mergeSort();
         
         System.out.println("Done sorting");
-        printArray();
     }
     
     
@@ -111,7 +110,8 @@ public class MainClass {
       */
     private static void insertionSort() {
         InsertionSort<Long> is = new InsertionSort<Long>(al);
-        is.sortAscending();
+//        is.sortAscending();
+        is.sortDescending();
     }
     
     

@@ -35,7 +35,23 @@ public class InsertionSort<T extends Comparable>{
         
         //comincia a riordinare partendo dal secondo elemento dell'array
         for(int i = 1; i < this.array.size(); i++)
-            recursiveSort(i, minIndex, i-1 );
+            recursiveSortAscending(i, minIndex, i-1 );
+    }
+    
+    
+    /**
+     * sort in ordine decrescente, dal piu' grande al piu' piccolo
+     */
+    public void sortDescending(){
+        if(this.array.size() < 2){
+            return;
+        }
+        
+    	int minIndex = 0;
+        
+        //comincia a riordinare partendo dal secondo elemento dell'array
+        for(int i = 1; i < this.array.size(); i++)
+            recursiveSortDescending(i, minIndex, i-1 );
     }
     
     
@@ -45,7 +61,7 @@ public class InsertionSort<T extends Comparable>{
      * @param minIndex indice minimo della porzione di array ordinato in cui cercare
      * @param maxIndex indice massimo della porzione di array ordinato in cui cercare
      */
-    private void recursiveSort(int indexCurrentItem, int minIndex, int maxIndex){
+    private void recursiveSortAscending(int indexCurrentItem, int minIndex, int maxIndex){
         int midIndex = (int)((minIndex + maxIndex)/2); //prende la parte intera
         T currentItem = this.array.get(indexCurrentItem);
         T midItem = this.array.get(midIndex);
@@ -62,7 +78,7 @@ public class InsertionSort<T extends Comparable>{
         else switch(currentItem.compareTo(midItem)){
             case -1:{
                 //l'elemento da ordinare e' minore di quello in posizione media. Confronto la parte a sinistra dell'indice medio
-                recursiveSort(indexCurrentItem, minIndex, midIndex-1);
+                recursiveSortAscending(indexCurrentItem, minIndex, midIndex-1);
                 break;
             }
             case 0:{ //caso gestito negli if-else iniziali
@@ -71,7 +87,44 @@ public class InsertionSort<T extends Comparable>{
             case 1:{
                 //l'elemento da ordinare e' maggiore di quello in posizione media. Confronto la parte a destra dell'indice medio
                 //se confronto due indici consecutivi mi blocco e confronto, altrimenti continuo le chiamate ricorsive
-                recursiveSort(indexCurrentItem, midIndex+1, maxIndex);
+                recursiveSortAscending(indexCurrentItem, midIndex+1, maxIndex);
+                break;
+            }
+            default:{
+                System.err.println("You shouldn't read this.");
+                break;
+            }
+        }//-switch
+    }
+    
+    
+    
+    
+    private void recursiveSortDescending(int indexCurrentItem, int minIndex, int maxIndex){
+        int midIndex = (int)((minIndex + maxIndex)/2); //prende la parte intera
+        T currentItem = this.array.get(indexCurrentItem);
+        T midItem = this.array.get(midIndex);
+        if(currentItem.compareTo(this.array.get(minIndex)) > 0){ // maggiore del primo
+            swapInRange(minIndex, indexCurrentItem);
+        }
+        else if(currentItem.compareTo(this.array.get(maxIndex)) < 0){ // minore dell'ultimo
+            swapInRange(maxIndex + 1, indexCurrentItem);
+        }
+        else if(currentItem.compareTo(midItem) == 0){ // uguale al medio
+            swapInRange(midIndex, indexCurrentItem);
+        }
+        else switch(currentItem.compareTo(midItem)){
+            case 1:{
+                //l'elemento da ordinare e' maggiore di quello in posizione media. Confronto la parte a sinistra dell'indice medio
+                recursiveSortDescending(indexCurrentItem, minIndex, midIndex-1);
+                break;
+            }
+            case 0:{ //caso gestito negli if-else iniziali
+                break;
+            }
+            case -1:{
+                //l'elemento da ordinare e' minore di quello in posizione media. Confronto la parte a destra dell'indice medio
+                recursiveSortDescending(indexCurrentItem, midIndex+1, maxIndex);
                 break;
             }
             default:{

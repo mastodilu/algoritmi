@@ -40,7 +40,7 @@ public class InsertionSortTest<T> {
         ArrayList<Long> al, result;
         
         //caso n. 1
-        // caso normale
+        //ordine crescente - arraylist di Long
         al = new ArrayList<Long>(Arrays.asList(     1L,2L,8L,11L,1L ));
         result = new ArrayList<Long>(Arrays.asList( 1L,1L,2L,8L,11L ));
         instance = new InsertionSort(al);
@@ -48,7 +48,7 @@ public class InsertionSortTest<T> {
         checkArrayListsLong(al, result);
         
         //caso n. 2
-        //arraylist senza elementi
+        //ordine crescente - arraylist senza elementi
         al = new ArrayList<Long>(Arrays.asList());
         result = new ArrayList<Long>(Arrays.asList());
         instance = new InsertionSort(al);
@@ -56,16 +56,41 @@ public class InsertionSortTest<T> {
         checkArrayListsLong(al, result);
         
         //caso n. 3
-        //arraylist di stringhe
+        //ordine crescente - arraylist di stringhe
         ArrayList<String> sss = new ArrayList<String>(Arrays.asList("BB","AAAAA","AA","CCC"));
         ArrayList<String> rrr = new ArrayList<String>(Arrays.asList("AA","AAAAA","BB","CCC"));
         instance = new InsertionSort(sss);
         instance.sortAscending();
         checkArrayListsString(sss, rrr);
+        
+        
+        //caso n. 4
+        //ordine decrescente - arraylist di long
+        al = new ArrayList<Long>(Arrays.asList(     1L,2L,8L,11L,1L ));
+        result = new ArrayList<Long>(Arrays.asList( 11L,8L,2L,1L,1L ));
+        instance = new InsertionSort(al);
+        instance.sortDescending();
+        checkArrayListsLong(al, result);
+        
+        
+        //caso n. 3
+        //ordine decrescente - arraylist di stringhe
+        sss = new ArrayList<String>(Arrays.asList("BB","AAAAA","AA","CCC"));
+        rrr = new ArrayList<String>(Arrays.asList("CCC","BB","AAAAA","AA"));
+        instance = new InsertionSort(sss);
+        instance.sortDescending();
+        checkArrayListsString(sss, rrr);
     }
     
+    
+    
+    
+    
+    
+    
     /**
-     * controlla che i due arraylist siano uguali
+     * controlla che i due arraylist siano uguali confrontando i long agli
+     * indici corrispondenti
      * @param first il primo arraylist
      * @param second il secondo arraylist
      */
@@ -79,7 +104,12 @@ public class InsertionSortTest<T> {
         }
     }
     
-    
+    /**
+     * controlla che i due arraylist siano uguali confrontando le stringhe
+     * agli indici corrispondenti
+     * @param first
+     * @param second 
+     */
     private void checkArrayListsString(ArrayList<String> first, ArrayList<String> second){
         long sizeofFirst = first.size();
         long sizeofSecond = second.size();
