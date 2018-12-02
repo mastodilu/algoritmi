@@ -5,14 +5,17 @@
  */
 package algoritmi;
 
+import algoritmi.sumsfinder.Sum;
+import algoritmi.sumsfinder.SumException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
-public class SumsFinder<T extends Comparable> {
+public class SumsFinder {
     
     /**
      * hashmap dell'array di numeri tra cui cercare gli addendi.
@@ -23,7 +26,7 @@ public class SumsFinder<T extends Comparable> {
      *      array[5] = elemento
      *      mappa('elemento') = 5
      */
-    private HashMap<T, Integer> integersMap;
+    private HashMap<Long, Integer> integersMap;
     
     /**
      * mappa ausiliaria popolata con gli elementi presenti piu' di una volta
@@ -31,12 +34,18 @@ public class SumsFinder<T extends Comparable> {
      * permette di tenere traccia degli addendi che sono usabili due volte
      * per calcolare una somma
      */
-    private HashMap<T,Integer> foundAgain;
+    private HashMap<Long,Integer> foundAgain;
     
     /**
      * array di numeri da verificare se sono formati dalla somma di due addendi
      */
-    private ArrayList<T> sums;
+    private ArrayList<Long> sums;
+    
+    
+    /**
+     * arraylist di Sum che contiene gli elementi che hanno creato una somma
+     */
+    private ArrayList<Sum> sumList;
     
     /**
      * costruttore
@@ -44,10 +53,11 @@ public class SumsFinder<T extends Comparable> {
      * @param arraySums arraylist di elementi che rappresentano le somme,
      *      elementi di cui cercare le possibili somme
      */
-    public SumsFinder(ArrayList<T> array, ArrayList<T> arraySums){
-        this.integersMap = new HashMap<T, Integer>();
-        this.foundAgain = new HashMap<T, Integer>();
+    public SumsFinder(ArrayList<Long> array, ArrayList<Long> arraySums){
+        this.integersMap = new HashMap<Long, Integer>();
+        this.foundAgain = new HashMap<Long, Integer>();
         this.sums = arraySums;
+        this.sumList = new ArrayList<Sum>();
         populateMap(array);
     }
     
@@ -59,7 +69,7 @@ public class SumsFinder<T extends Comparable> {
      * per tenere traccia degli elementi trovati piu' di una volta
      * @param array arraylist di elementi usati per popolare la mappa
      */
-    private void populateMap(ArrayList<T> array){
+    private void populateMap(ArrayList<Long> array){
         for(int i = 0; i < array.size(); i++){
             if(this.integersMap.get(array.get(i)) == null) //se l'elemento non esiste nella mappa principale
                 this.integersMap.put(array.get(i), i);
@@ -67,10 +77,68 @@ public class SumsFinder<T extends Comparable> {
                 this.foundAgain.put(array.get(i), i);
         }
     }
+    
+    
+    
+    public void findAddends(){
+        for(Long sum : this.sums){
+            for(Map.Entry<Long,Integer> entry : this.integersMap.entrySet()){
+                Long firstKey = entry.getKey();
+                Long secondKey = Math.abs(sum - firstKey);
+                
+                boolean found = this.integersMap.get(secondKey) != null;
+                // se i due addendi sono chiavi (e quindi numeri) diversi allora OK
+                //altrimenti controlla che ci sia almeno un doppione per quel numero
+                if( found && firstKey == secondKey){
+                    found = false;
+                    if(this.foundAgain.get(secondKey) != null){ // trovato il doppione, allora OK
+                        found = true;
+                    }
+                }
+                if(found == true){
+                    addToSumList(sum, firstKey, secondKey);
+                    this.printSum(sum, firstKey, secondKey);
+                    break;
+                }
+            }
+        }
+    }
+
+    
+    public ArrayList<Sum> getSumList() {
+        return sumList;
+    }
+    
+    
+    
+    
+    
+    /**
+     * helper method
+     * stampa un messaggio quando si trova una somma
+     * @param sum
+     * @param firstElem
+     * @param secondElem 
+     */
+    private void printSum(Long sum, Long firstElem, Long secondElem){
+        System.out.println(sum + " = " + firstElem + " + " + secondElem);
+    }
 
     @Override
     public String toString(){
-        return "map " + this.integersMap.toString() + "\nfound twice " + this.foundAgain.toString();
+        return 
+                "map " + this.integersMap.toString()
+                + "\nfound twice " + this.foundAgain.toString()
+                + "\nsums " + this.sums.toString();
     }
+
     
+    
+    private void addToSumList(Long sum, Long firstKey, Long secondKey) {
+        try{
+            this.sumList.add(new Sum(sum, firstKey, secondKey));
+        }catch(SumException se){
+            System.err.println(se.getMessage());
+        }
+    }
 }
