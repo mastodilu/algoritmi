@@ -44,8 +44,8 @@ public class MainClass {
         System.out.println(al.size() + " elements in the array");
         System.out.println("Start sorting");
         
-        insertionSort();
-//        mergeSort();
+//        insertionSort();
+        mergeSort();
         
         System.out.println("Done sorting");
     }
@@ -121,6 +121,7 @@ public class MainClass {
       */
     private static void mergeSort() {
         MergeSort<Long> is = new MergeSort<Long>(al);
-        is.sortAscending();
+//        is.sortAscending();
+        is.sortDescending();
     }
 }

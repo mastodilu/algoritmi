@@ -14,6 +14,11 @@ import java.util.ArrayList;
 public class MergeSort<T extends Comparable>{
     
     /**
+     * true se l'ordinamento e' in ordine crescente, false altrimenti
+     */
+    private boolean ascending = false;
+    
+    /**
      * array disordinato da riordinare
      */
     ArrayList<T> array;
@@ -34,7 +39,8 @@ public class MergeSort<T extends Comparable>{
         if(size <= 1)
             return;
         
-        mergeSortAscending(0, size-1);
+        this.ascending = true;
+        mergeSort(0, size-1);
     }
     
     
@@ -50,27 +56,9 @@ public class MergeSort<T extends Comparable>{
         if(size <= 1)
             return;
         
-        mergeSortDescending(0, size-1);
-    }
-    
-    
-    
-    /**
-     * dimezza l'array ricorsivamente e volta per volta chiama il metodo mergesortDescending
-     * sulla prima e sulla seconda meta', per poi unirle in modo ordinato col metodo mergeDescending
-     * @param minIndex
-     * @param maxIndex 
-     */
-    private void mergeSortDescending(int minIndex, int maxIndex){
-        int medIndex = (int)( (minIndex + maxIndex) / 2);
-        int diff = maxIndex - minIndex; // diff > 0 se c'e' piu' di un elemento nel range valutato
-        if(diff > 0){
-            mergeSortDescending(minIndex, medIndex);
-            mergeSortDescending(medIndex + 1, maxIndex);
-            mergeDescending(minIndex, medIndex, maxIndex);
-        }
-    }
-    
+        this.ascending = false;
+        mergeSort(0, size-1);
+    }    
     
     
     /**
@@ -114,17 +102,20 @@ public class MergeSort<T extends Comparable>{
     
     /**
      * dimezza l'array ricorsivamente e volta per volta chiama il metodo mergesort
-     * sulla prima e sulla seconda meta', per poi unirle in modo ordinato col metodo mergeAscending
-     * @param minIndex
-     * @param maxIndex 
+     * sulla prima e sulla seconda meta', per poi unirle in modo ordinato con
+     * mergeAscending oppure mergeDescending a seconda del valore booleano di 'this.ascending'
+     * @param minIndex indice del primo elemento del sottoarray di sinistra
+     * @param maxIndex indice dell'ultimo elemento del sottoarray di destra
      */
-    private void mergeSortAscending(int minIndex, int maxIndex){
+    private void mergeSort(int minIndex, int maxIndex){
         int medIndex = (int)( (minIndex + maxIndex) / 2);
         int diff = maxIndex - minIndex; // diff > 0 se c'e' piu' di un elemento nel range valutato
         if(diff > 0){
-            mergeSortAscending(minIndex, medIndex);
-            mergeSortAscending(medIndex + 1, maxIndex);
-            mergeAscending(minIndex, medIndex, maxIndex);
+            mergeSort(minIndex, medIndex);
+            mergeSort(medIndex + 1, maxIndex);
+            if(this.ascending)
+                    mergeAscending(minIndex, medIndex, maxIndex);
+            else    this.mergeDescending(minIndex, medIndex, maxIndex);
         }
     }
     
