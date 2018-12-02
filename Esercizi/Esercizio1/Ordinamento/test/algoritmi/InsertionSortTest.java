@@ -44,7 +44,7 @@ public class InsertionSortTest<T> {
         al = new ArrayList<Long>(Arrays.asList(     1L,2L,8L,11L,1L ));
         result = new ArrayList<Long>(Arrays.asList( 1L,1L,2L,8L,11L ));
         instance = new InsertionSort(al);
-        instance.sort();
+        instance.sortAscending();
         checkArrayListsLong(al, result);
         
         //caso n. 2
@@ -52,7 +52,7 @@ public class InsertionSortTest<T> {
         al = new ArrayList<Long>(Arrays.asList());
         result = new ArrayList<Long>(Arrays.asList());
         instance = new InsertionSort(al);
-        instance.sort();
+        instance.sortAscending();
         checkArrayListsLong(al, result);
         
         //caso n. 3
@@ -60,7 +60,7 @@ public class InsertionSortTest<T> {
         ArrayList<String> sss = new ArrayList<String>(Arrays.asList("BB","AAAAA","AA","CCC"));
         ArrayList<String> rrr = new ArrayList<String>(Arrays.asList("AA","AAAAA","BB","CCC"));
         instance = new InsertionSort(sss);
-        instance.sort();
+        instance.sortAscending();
         checkArrayListsString(sss, rrr);
     }
     

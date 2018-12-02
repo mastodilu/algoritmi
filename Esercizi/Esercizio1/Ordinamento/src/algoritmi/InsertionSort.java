@@ -23,8 +23,10 @@ public class InsertionSort<T extends Comparable>{
         this.array = array;
     }
     
-    
-    public void sort(){
+    /**
+     * sort in ordine crescente, dal piu' basso al piu' alto
+     */
+    public void sortAscending(){
         if(this.array.size() < 2){
             return;
         }
@@ -32,13 +34,17 @@ public class InsertionSort<T extends Comparable>{
     	int minIndex = 0;
         
         //comincia a riordinare partendo dal secondo elemento dell'array
-        for(int i = 1; i < this.array.size(); i++){
+        for(int i = 1; i < this.array.size(); i++)
             recursiveSort(i, minIndex, i-1 );
-            System.out.println(i + " done...");
-        }
     }
     
-
+    
+    /**
+     * insertion sort ricorsivo per ottimizzare i tempi di esecuzione
+     * @param indexCurrentItem posizione dell'elemento da inserire nella parte ordinata
+     * @param minIndex indice minimo della porzione di array ordinato in cui cercare
+     * @param maxIndex indice massimo della porzione di array ordinato in cui cercare
+     */
     private void recursiveSort(int indexCurrentItem, int minIndex, int maxIndex){
         int midIndex = (int)((minIndex + maxIndex)/2); //prende la parte intera
         T currentItem = this.array.get(indexCurrentItem);

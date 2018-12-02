@@ -12,7 +12,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 /**
  *
@@ -45,8 +44,8 @@ public class MainClass {
         System.out.println(al.size() + " elemnts in the array");
         System.out.println("Start sorting");
         
-//        insertionSort();
-        mergeSort();
+        insertionSort();
+//        mergeSort();
         
         System.out.println("Done sorting");
         printArray();
@@ -112,7 +111,7 @@ public class MainClass {
       */
     private static void insertionSort() {
         InsertionSort<Long> is = new InsertionSort<Long>(al);
-        is.sort();
+        is.sortAscending();
     }
     
     
