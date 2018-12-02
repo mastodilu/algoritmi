@@ -29,8 +29,12 @@ public class MergeSort<T extends Comparable>{
     public void sort(){
         if(this.array == null)
             return;
-        if(this.array.size() <= 1)
+        
+        int size = this.array.size();
+        if(size <= 1)
             return;
+        
+        mergeSort(0, size-1);
     }
     
     
@@ -40,12 +44,13 @@ public class MergeSort<T extends Comparable>{
      * @param maxIndex 
      */
     private void mergeSort(int minIndex, int maxIndex){
-        int size = this.array.size();
-        int medIndex = (int)(size/2);
-        if(size > 1){
-            mergeSort(0, medIndex);
-            mergeSort(medIndex + 1, size);
-            merge(0, medIndex, size);
+        System.out.println("mergesort minIndex " + minIndex + " maxIndex " + maxIndex);
+        int medIndex = (int)( (minIndex + maxIndex) / 2);
+        int diff = maxIndex - minIndex; // diff > 0 se c'e' piu' di un elemento nel range valutato
+        if(diff > 0){
+            mergeSort(minIndex, medIndex);
+            mergeSort(medIndex + 1, maxIndex);
+            merge(minIndex, medIndex, maxIndex);
         }
     }
     
@@ -67,6 +72,7 @@ public class MergeSort<T extends Comparable>{
      * @param maxIndex indice finale del secondo array
      */
     private void merge(int minIndex, int medIndex, int maxIndex){
+        System.out.println("merge minIndex " + minIndex + " maxIndex " + maxIndex);
         int leftIndex, rightIndex;
         leftIndex = minIndex;
         boolean stop;
