@@ -39,12 +39,18 @@ public class MergeSortTest {
         ArrayList<Long> result;
         
         //caso n.1 - normale
-        al = new ArrayList<Long>(Arrays.asList(5L, 2L, 3L));
-        result = new ArrayList<Long>(Arrays.asList(2L,3L,5L));
+        al = new ArrayList<Long>(Arrays.asList(     5L,2L,3L,1L));
+        result = new ArrayList<Long>(Arrays.asList( 1L,2L,3L,5L));
         MergeSort instance = new MergeSort(al);
-        checkArrayListsLong(al, result);
-        
         instance.sort();
+        checkLong(al, result);
+        
+        //caso n.2
+        ArrayList<String> sss = new ArrayList<String>(Arrays.asList( "AA", "CC", "BB"));
+        ArrayList<String> rrr = new ArrayList<String>(Arrays.asList( "AA","BB","CC"));
+        instance = new MergeSort(sss);
+        instance.sort();
+        checkString(sss, rrr);
     }
     
     
@@ -53,7 +59,18 @@ public class MergeSortTest {
      * @param first il primo arraylist
      * @param second il secondo arraylist
      */
-    private void checkArrayListsLong(ArrayList<Long> first, ArrayList<Long> second){
+    private void checkLong(ArrayList<Long> first, ArrayList<Long> second){
+        long sizeofFirst = first.size();
+        long sizeofSecond = second.size();
+        assert(sizeofFirst == sizeofSecond);
+        
+        for(int i = 0; i < sizeofFirst; i++){
+            assertEquals(first.get(i), second.get(i));
+        }
+    }
+
+    
+    private void checkString(ArrayList<String> first, ArrayList<String> second) {
         long sizeofFirst = first.size();
         long sizeofSecond = second.size();
         assert(sizeofFirst == sizeofSecond);

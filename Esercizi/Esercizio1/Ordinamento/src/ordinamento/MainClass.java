@@ -39,7 +39,7 @@ public class MainClass {
         //merge sort
 //        al = new ArrayList<Long>(Arrays.asList(10L,5L,11L,12L,3L));
 //        al = new ArrayList<Long>(Arrays.asList(10L,5L,11L,12L,10L,5L,11L,12L,3L));
-        al = new ArrayList<Long>(Arrays.asList(4L,3L,2L,1L));
+        al = new ArrayList<Long>(Arrays.asList(5L,2L,3L,1L));
         
         
         //lettura da file
