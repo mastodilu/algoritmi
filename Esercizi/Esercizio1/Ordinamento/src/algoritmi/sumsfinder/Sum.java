@@ -20,7 +20,7 @@ public class Sum {
         this.SECOND = s;
     }
     
-    public boolean sameFields(Sum other){
+    public boolean isEqual(Sum other){
         return (    (this.RESULT.compareTo(other.RESULT) == 0)
                     && (this.FIRST.compareTo(other.FIRST) == 0)
                     && (this.SECOND.compareTo(other.SECOND) == 0)

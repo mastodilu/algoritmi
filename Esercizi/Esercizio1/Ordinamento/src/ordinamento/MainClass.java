@@ -7,6 +7,7 @@ package ordinamento;
 
 import algoritmi.InsertionSort;
 import algoritmi.MergeSort;
+import algoritmi.SumsFinder;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -23,29 +24,36 @@ public class MainClass {
      */
     private static final String PATH = "C:\\Users\\masto\\Documents\\MieiProgetti\\Algoritmi_file_enormi\\Esercizio1\\integers.csv";
 //    private static final String PATH = "C:\\Users\\MatteoDiLucchio\\Documents\\Algoritmi\\Algoritmi file enormi\\Esercizio1\\integers.csv";
+    private static final String PATH_SUMS = "C:\\Users\\masto\\Documents\\MieiProgetti\\Algoritmi_file_enormi\\Esercizio1\\sums.txt";
     static BufferedReader br;
     static FileReader fr;
     /**
-     * arraylist dei numeri letti da file
+     * arraylist dei numeri letti da file integers.csv
      */
     static ArrayList<Long> al;
+    
+    /**
+     * arraylist di numeri letti da file sums.txt
+     */
+    static ArrayList<Long> sumslist;
     
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         
-        //lettura da file
+        //lettura da file integers.csv
         al = new ArrayList<Long>();
-        open();
-        read();
+        openIntegers();
+        readIntegers();
         close();
 
         System.out.println(al.size() + " elements in the array");
         System.out.println("Start sorting");
         
 //        insertionSort();
-        mergeSort();
+//        mergeSort();
+        findSums();
         
         System.out.println("Done sorting");
     }
@@ -66,7 +74,7 @@ public class MainClass {
     /**
      * legge i numeri dal file e li aggiunge all'array
      */
-    private static void read(){
+    private static void readIntegers(){
         String line;
         try{
             while( (line = br.readLine()) != null){
@@ -81,7 +89,7 @@ public class MainClass {
     /**
      * apre lo stream per la lettura del file
      */
-    private static void open(){
+    private static void openIntegers(){
         try{
             fr = new FileReader(PATH);
             br = new BufferedReader(fr);
@@ -100,7 +108,7 @@ public class MainClass {
             br.close();
             fr.close();
         }catch(IOException e){
-            System.err.println("Unable to close " + PATH);
+            System.err.println("Unable to close the stream");
         }
     }
 
@@ -123,5 +131,31 @@ public class MainClass {
         MergeSort<Long> is = new MergeSort<Long>(al);
 //        is.sortAscending();
         is.sortDescending();
+    }
+    
+    
+    private static void findSums(){
+        try{
+            fr = new FileReader(PATH_SUMS);
+            br = new BufferedReader(fr);
+            sumslist = new ArrayList<Long>();
+            
+            String line;
+            while( (line = br.readLine()) != null){
+                sumslist.add(Long.parseLong(line));
+            }
+        
+        }catch(FileNotFoundException e){
+            System.err.println("Unable to open " + PATH);
+            close();
+        }catch(IOException e){
+            System.err.println("Errore IO");
+        }
+        
+        close();
+        
+        SumsFinder sumsFinder = new SumsFinder(al, sumslist);
+        sumsFinder.findAddends();
+        System.out.println(sumsFinder.getSumList().toString());
     }
 }

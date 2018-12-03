@@ -84,7 +84,7 @@ public class SumsFinder {
         for(Long sum : this.sums){
             for(Map.Entry<Long,Integer> entry : this.integersMap.entrySet()){
                 Long firstKey = entry.getKey();
-                Long secondKey = Math.abs(sum - firstKey);
+                Long secondKey = sum - firstKey;
                 
                 boolean found = this.integersMap.get(secondKey) != null;
                 // se i due addendi sono chiavi (e quindi numeri) diversi allora OK
