@@ -52,9 +52,9 @@ public class MainClass {
         System.out.println(al.size() + " elements in the array");
         System.out.println("Start sorting");
         
-//        insertionSort();
+        insertionSort();
 //        mergeSort();
-        findSums();
+//        findSums();
         
         System.out.println("Done sorting");
     }
@@ -119,8 +119,8 @@ public class MainClass {
       */
     private static void insertionSort() {
         InsertionSort<Long> is = new InsertionSort<Long>(al);
-//        is.sortAscending();
-        is.sortDescending();
+        is.sortAscending();
+//        is.sortDescending();
     }
     
     
@@ -130,8 +130,8 @@ public class MainClass {
       */
     private static void mergeSort() {
         MergeSort<Long> is = new MergeSort<Long>(al);
-//        is.sortAscending();
-        is.sortDescending();
+        is.sortAscending();
+//        is.sortDescending();
     }
     
     
