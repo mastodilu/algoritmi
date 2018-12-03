@@ -1,7 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Questa classe permette di eseguire mergesort sull'arraylist "array"
+ * in ordine crescente o decrescente per ordinarne gli elementi contenuti
+ * senza creare arraylist ausiliari.
+ * La ricerca viene resa efficiente dall'approccio divide et impera, che
+ * dimezza il range analizzato ad ogni iterazione, fino a quando non si puo'
+ * piu' dimezzare.
+ * 
  */
 package algoritmi;
 

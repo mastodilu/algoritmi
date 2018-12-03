@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Questa classe permette di rappresentare un oggetto somma come composto
+ * da 3 numeri: un long risultato e due long addendi.
+ * Nel costruttore si controlla la correttezza della somma specificata.
  */
 package algoritmi.sumsfinder;
 

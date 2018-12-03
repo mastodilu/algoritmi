@@ -1,7 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Questa classe sfrutta delle hashmap per cercare di trovare quei numeri
+ * che sono la possibile somma di altri due numeri.
+ * I primi sono cercati nella hashmap "sums", gli altri in "integersmap" ed
+ * eventualmente in "foundAgain".
+ * Ogni somma trovata viene rappresentata dall'oggetto Sum e aggiunta
+ * all'arraylist "sumList" che puo' essere letto al termine dell'algoritmo
+ * per vedere il risultato.
  */
 package algoritmi;
 

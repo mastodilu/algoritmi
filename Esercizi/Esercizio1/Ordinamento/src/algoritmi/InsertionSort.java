@@ -1,9 +1,11 @@
 /*
- * Insertion sort permette di ordinare un array.
- * Si comincia con un array vuoto, e ogni nuovo inserimento deve
- * mantenere la parte precedente ordinata. Così facendo anche l'ultimo
- * inserimento mantiene la parte sinistra ordinata e tutto l'array risulta
- * ordinato correttamente.
+ * Questa class permette di ordinare un array applicando una versione di
+ * insertionsort lievemente modificata.
+ * L'arraylist analizzato e' "array", sul quale viene applicato un algoritmo
+ * insertionsort modificato per essere piu' efficiente nel caso di array
+ * non ordinati in partenza. In particolare la posizione in cui inserire
+ * l'elemento analizzato nella parte sinistra viene trovata con un approccio
+ * divide et impera.
  */
 package algoritmi;
 import java.util.ArrayList;

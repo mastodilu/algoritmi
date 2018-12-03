@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Questa class serve a leggere i file "integers.csv" e "sums.txt" e a creare
+ * gli arraylist da passare come parametri alle altre classi.
+ * Permette di avviare insertion sort (crescente, decrescente), merge sort
+ * (crescente, decrescente) e di cercare le somme di numeri con la classe sumsfinder.
  */
 package ordinamento;
 
