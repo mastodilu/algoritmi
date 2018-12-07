@@ -14,9 +14,9 @@ import static org.junit.Assert.*;
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
-public class StringsDistanceTest {
+public class StringsDistanceDynamicTest {
     
-    public StringsDistanceTest() {
+    public StringsDistanceDynamicTest() {
     }
     
     @BeforeClass
@@ -28,58 +28,59 @@ public class StringsDistanceTest {
     }
 
     /**
-     * Test of editDistance method, of class StringsDistance.
+     * Test of evaluateDistance method, of class StringsDistanceDynamic.
      */
     @Test
-    public void testEditDistance() {
-        System.out.println("editDistance");
-        StringsDistance instance;
+    public void testEvaluateDistance() {
+        System.out.println("evaluateDistance");
         String s1, s2;
-        int result, expResult;
-                
+        StringsDistanceDynamic instance;
+        int expResult, result;
+        
         //test 1
         s1 = "CASA";
         s2 = "CANE";
-        instance = new StringsDistance();
+        instance = new StringsDistanceDynamic(s1,s2);
         expResult = 4;
-        result = instance.evaluateDistance(s1, s2);
+        result = instance.evaluateDistance();
+        System.out.println("edit distance dyn CASA CANE " + result);
         assertEquals(expResult, result);
-        System.out.println("edit distance CASA CANE " + result);
         
         //test 2
         s1 = "CIAO";
         s2 = "";
-        instance = new StringsDistance();
+        instance = new StringsDistanceDynamic(s1,s2);
         expResult = 4;
-        result = instance.evaluateDistance(s1, s2);
-        System.out.println("edit distance CIAO '' " + result);
+        result = instance.evaluateDistance();
+        System.out.println("edit distance dyn CIAO '' " + result);
         assertEquals(expResult, result);
         
         //test 3
         s1 = "";
         s2 = "";
-        instance = new StringsDistance();
+        instance = new StringsDistanceDynamic(s1,s2);
         expResult = 0;
-        result = instance.evaluateDistance(s1, s2);
-        System.out.println("edit distance '' '' " + result);
+        result = instance.evaluateDistance();
+        System.out.println("edit distance dyn '' '' " + result);
         assertEquals(expResult, result);
         
         //test 4
         s1 = "casa";
         s2 = "cassa";
-        instance = new StringsDistance();
+        instance = new StringsDistanceDynamic(s1,s2);
         expResult = 1;
-        result = instance.evaluateDistance(s1, s2);
-        System.out.println("edit distance casa cassa " + result);
+        result = instance.evaluateDistance();
+        System.out.println("edit distance dyn casa cassa " + result);
         assertEquals(expResult, result);
         
         //test 5
         s1 = "casa";
         s2 = "cavalluccio";
-        instance = new StringsDistance();
+        instance = new StringsDistanceDynamic(s1,s2);
         expResult = 9;
-        result = instance.evaluateDistance(s1, s2);
-        System.out.println("edit distance casa cavalluccio " + result);
+        result = instance.evaluateDistance();
+        System.out.println("edit distance dyn casa cavalluccio " + result);
         assertEquals(expResult, result);
     }
+    
 }

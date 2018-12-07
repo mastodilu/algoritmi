@@ -4,6 +4,8 @@
  */
 package esercizio2.stringdistance;
 
+import static esercizio2.stringdistance.Utils.*;
+
 /**
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
@@ -15,7 +17,8 @@ public class StringsDistanceDynamic {
      * alleggerire l'impiego di risorse.
      */
     private enum OperationTypes{
-        EMPTY,INS,NOOP,CANC
+        EMPTY,
+        INS,NOOP,CANC
     }
     
     /**
@@ -44,6 +47,8 @@ public class StringsDistanceDynamic {
      */
     private int[][] insCosts;
     
+    String str1, str2;
+    
     
     
     /**
@@ -54,8 +59,10 @@ public class StringsDistanceDynamic {
      * @param s2 
      */
     public StringsDistanceDynamic(String s1, String s2){
-        int len1 = s1.length();
-        int len2 = s2.length();
+        this.str1 = s1;
+        this.str2 = s2;
+        int len1 = this.str1.length();
+        int len2 = this.str2.length();
         minimumOperationType = new OperationTypes[len1][len2];
         minimumCosts = new int[len1][len2];
         noopCosts = new int[len1][len2];
@@ -71,24 +78,93 @@ public class StringsDistanceDynamic {
             }
     }
     
-    public int evaluateDistance(String s1, String s2){
-        return -1;
+    /**
+     * Restituisce la distanza minima di edit tra le due stringhe
+     * pssate come parametro.
+     */
+    public int evaluateDistance(){
+        if(this.str1.length() == 0)    return this.str2.length();
+        if(this.str2.length() == 0)    return this.str1.length();
+        
+        this.str1 = this.str1.toLowerCase();
+        this.str2 = this.str2.toLowerCase();
+        
+        return this.editDistance(this.str1, this.str2);
     }
     
     private int editDistance(String s1, String s2){
-        return -1;
+        //nessuna delle due e' la stringa vuota
+        //printCurrentStatus("edit", s1, s2);
+        int i = s1.length() - 1;
+        int j = s2.length() - 1;
+        if(s1.length() > 0 && s2.length() > 0){
+            int noop = this.noopCosts[i][j];
+            int canc = this.cancCosts[i][j];
+            int ins = this.insCosts[i][j];
+
+            if(noop == -1)  noop = noopEditDistance(s1,s2);
+            if(canc == -1)  canc = cancEditDistance(s1,s2);
+            if(ins == -1)   ins = insEditDistance(s1,s2);
+            
+            this.minimumCosts[i][j] = min( noop, canc, ins);
+            this.writeMinOperationType(i, j, noop, canc, ins);
+            return this.minimumCosts[i][j];
+        }
+        
+        // almeno una delle due e' la stringa vuota
+        if(s1.length() == 0 ){
+            return s2.length();
+        }
+        return s1.length();
     }
     
     private int noopEditDistance(String s1, String s2){
-        return -1;
+        //printCurrentStatus("noop", s1, s2);
+        int i = s1.length() - 1;
+        int j = s2.length() - 1;
+        if(this.noopCosts[i][j] == -1){//se l'operazione non e' mai stata fatta
+            if(s1.charAt(0) == s2.charAt(0))
+                this.noopCosts[i][j] = this.editDistance(rest(s1), rest(s2));
+            else 
+                this.noopCosts[i][j] = Integer.MAX_VALUE;
+        }
+        return this.noopCosts[i][j];
     }
     
     private int cancEditDistance(String s1, String s2){
-        return -1;
+        //printCurrentStatus("canc", s1, s2);
+        int i = s1.length() - 1;
+        int j = s2.length() - 1;
+        if(this.cancCosts[i][j] == -1){
+            this.cancCosts[i][j] = 1 + this.editDistance(s1, rest(s2));
+        }
+        return this.cancCosts[i][j];
     }
     
     private int insEditDistance(String s1, String s2){
-        return -1;
+        //printCurrentStatus("ins", s1, s2);
+        int i = s1.length() - 1;
+        int j = s2.length() - 1;
+        if( this.insCosts[i][j] == -1 ){
+            this.insCosts[i][j] = 1 + this.editDistance(rest(s1), s2);
+        }
+        return this.insCosts[i][j];
+    }
+    
+    
+    
+    private void writeMinOperationType(
+            int i,
+            int j,
+            int noop,
+            int canc,
+            int ins){
+        if(this.minimumCosts[i][j] == noop)
+            this.minimumOperationType[i][j] = OperationTypes.NOOP;
+        else if(this.minimumCosts[i][j] == canc)
+            this.minimumOperationType[i][j] = OperationTypes.CANC;
+        else if(this.minimumCosts[i][j] == ins)
+            this.minimumOperationType[i][j] = OperationTypes.INS;
     }
     
     
