@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package algoritmi;
+package testesercizio1;
 
 import esercizio1.algoritmi.MergeSort;
 import java.util.ArrayList;
