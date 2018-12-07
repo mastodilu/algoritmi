@@ -32,12 +32,12 @@ public class StringsDistanceTest {
      */
     @Test
     public void testEditDistance() {
+        System.out.println("editDistance");
         StringsDistance instance;
         String s1, s2;
         int result, expResult;
                 
         //test 1
-        System.out.println("editDistance");
         s1 = "CASA";
         s2 = "CANE";
         instance = new StringsDistance();
@@ -47,7 +47,6 @@ public class StringsDistanceTest {
         System.out.println("edit distance CASA CANE " + result);
         
         //test 2
-        System.out.println("editDistance");
         s1 = "CIAO";
         s2 = "";
         instance = new StringsDistance();
@@ -57,7 +56,6 @@ public class StringsDistanceTest {
         assertEquals(expResult, result);
         
         //test 3
-        System.out.println("editDistance");
         s1 = "";
         s2 = "";
         instance = new StringsDistance();
@@ -67,17 +65,6 @@ public class StringsDistanceTest {
         assertEquals(expResult, result);
         
         //test 4
-        System.out.println("editDistance");
-        s1 = "casa";
-        s2 = "casasa";
-        instance = new StringsDistance();
-        expResult = 2;
-        result = instance.evaluateDistance(s1, s2);
-        System.out.println("edit distance casa casasa " + result);
-        assertEquals(expResult, result);
-        
-        //test 5
-        System.out.println("editDistance");
         s1 = "casa";
         s2 = "cassa";
         instance = new StringsDistance();

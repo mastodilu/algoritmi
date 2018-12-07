@@ -48,6 +48,7 @@ public class StringsDistance {
     
     private int editDistance(String s1, String s2){
         //nessuna delle due e' la stringa vuota
+        //this.printCurrentStatus("edit", s1, s2);
         if(s1.length() > 0 && s2.length() > 0)
             return min(
                 noopEditDistance(s1,s2),
@@ -64,6 +65,7 @@ public class StringsDistance {
      * metodo di supporto per editDistance
      */
     private int noopEditDistance(String s1, String s2){
+        //this.printCurrentStatus("noop", s1, s2);
         if( s1.charAt(0) == s2.charAt(0) ){
             return this.editDistance( rest(s1), rest(s2) );
         }
@@ -74,6 +76,7 @@ public class StringsDistance {
      * metodo di supporto per editDistance
      */
     private int cancEditDistance(String s1, String s2){
+        //this.printCurrentStatus("canc", s1, s2);
         return 1 + this.editDistance(s1, rest(s2));
     }
     
@@ -81,6 +84,7 @@ public class StringsDistance {
      * metodo di supporto per editDistance
      */
     private int insEditDistance(String s1, String s2){
+        // this.printCurrentStatus("ins", s1, s2);
         return 1 + this.editDistance(rest(s1), s2);
     }
     
@@ -96,6 +100,11 @@ public class StringsDistance {
             return s;
         }
         return "";
+    }
+    
+    
+    private void printCurrentStatus(String op, String s1, String s2){
+        System.out.println(op + " - " + s1 + ", " + s2);
     }
     
     
@@ -120,43 +129,12 @@ public class StringsDistance {
             if(canc.getValue() < min)   min = canc.getValue();
             if(ins.getValue() < min)    min = ins.getValue();
             
-        }catch(PositiveInt.PosIntException e){
+        }catch(PosIntException e){
             System.err.println(e.getMessage());
             min = -1;
         }
         
         return min;
-    }
-    
-    /**
-     * classe che rappresenta un intero non negativo
-     */
-    private class PositiveInt{
-        private int value;
-        
-        public PositiveInt(int n) throws PosIntException{
-            if(n >= 0)
-                this.value = n;
-            else throw new PosIntException("Value must be non negative");
-        }
-        
-        public int getValue(){
-            return this.value;
-        }
-        
-        
-        
-        /**
-         * eccezione lanciata quando si cerca di inizializzare
-         * un PositiveInt con un valore negativo
-         */
-        class PosIntException extends Exception {
-
-            public PosIntException(String message) {
-                super(message);
-            }
-
-        }
     }
     
 }
