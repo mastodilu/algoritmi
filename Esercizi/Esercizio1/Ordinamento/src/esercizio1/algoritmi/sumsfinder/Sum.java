@@ -3,7 +3,7 @@
  * da 3 numeri: un long risultato e due long addendi.
  * Nel costruttore si controlla la correttezza della somma specificata.
  */
-package algoritmi.sumsfinder;
+package esercizio1.algoritmi.sumsfinder;
 
 /**
  *

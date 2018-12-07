@@ -2,7 +2,7 @@
  * Classe eccezione usata dalla class SumsFinder.
  * Questa eccezione viene lanciata quando si specifica la somma sbagliata.
  */
-package algoritmi.sumsfinder;
+package esercizio1.algoritmi.sumsfinder;
 
 /**
  *

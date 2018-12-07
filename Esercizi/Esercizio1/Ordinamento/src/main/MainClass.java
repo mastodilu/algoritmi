@@ -4,11 +4,11 @@
  * Permette di avviare insertion sort (crescente, decrescente), merge sort
  * (crescente, decrescente) e di cercare le somme di numeri con la classe sumsfinder.
  */
-package ordinamento;
+package main;
 
-import algoritmi.InsertionSort;
-import algoritmi.MergeSort;
-import algoritmi.SumsFinder;
+import esercizio1.algoritmi.InsertionSort;
+import esercizio1.algoritmi.MergeSort;
+import esercizio1.algoritmi.SumsFinder;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;

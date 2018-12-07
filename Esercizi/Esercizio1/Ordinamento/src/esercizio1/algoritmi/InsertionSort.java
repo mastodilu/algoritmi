@@ -7,7 +7,7 @@
  * l'elemento analizzato nella parte sinistra viene trovata con un approccio
  * divide et impera.
  */
-package algoritmi;
+package esercizio1.algoritmi;
 import java.util.ArrayList;
 
 /**

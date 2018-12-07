@@ -7,10 +7,10 @@
  * all'arraylist "sumList" che puo' essere letto al termine dell'algoritmo
  * per vedere il risultato.
  */
-package algoritmi;
+package esercizio1.algoritmi;
 
-import algoritmi.sumsfinder.Sum;
-import algoritmi.sumsfinder.SumException;
+import esercizio1.algoritmi.sumsfinder.Sum;
+import esercizio1.algoritmi.sumsfinder.SumException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;

@@ -5,6 +5,7 @@
  */
 package algoritmi;
 
+import esercizio1.algoritmi.InsertionSort;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.AfterClass;

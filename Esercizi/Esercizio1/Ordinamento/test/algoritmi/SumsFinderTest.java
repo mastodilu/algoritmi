@@ -5,8 +5,9 @@
  */
 package algoritmi;
 
-import algoritmi.sumsfinder.Sum;
-import algoritmi.sumsfinder.SumException;
+import esercizio1.algoritmi.SumsFinder;
+import esercizio1.algoritmi.sumsfinder.Sum;
+import esercizio1.algoritmi.sumsfinder.SumException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.AfterClass;

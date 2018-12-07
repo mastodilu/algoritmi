@@ -5,6 +5,7 @@
  */
 package algoritmi;
 
+import esercizio1.algoritmi.MergeSort;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.junit.AfterClass;

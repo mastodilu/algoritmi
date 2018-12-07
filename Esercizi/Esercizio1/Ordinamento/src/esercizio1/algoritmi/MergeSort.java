@@ -7,7 +7,7 @@
  * piu' dimezzare.
  * 
  */
-package algoritmi;
+package esercizio1.algoritmi;
 
 import java.util.ArrayList;
 
