@@ -40,15 +40,71 @@ public class StringsDistance {
      */
     public String rest(String s){
         if(!s.isEmpty()){
-            System.out.println("La stringa e' lunga " + s.length() + " caratteri.");
-            s.substring(1);
-            System.out.println("Ora la stringa e' lunga " + s.length() + " caratteri.");
+            s = s.substring(1);
+            return s;
         }
-        // se la stringa e' vuota
         return "";
     }
     
     
+    /**
+     * Restituisce il minimo dei 3 parametri interi passati.
+     * Se sono uguali viene favorito noop, poi canc, poi ins.
+     * I parametri interi passati sono non negativi perche' rappresentano
+     * costi di operazioni.
+     * @param noop
+     * @param canc
+     * @param ins 
+     */
+    private int min(int _noop, int _canc, int _ins){
+        int min;
+        
+        try{
+            PositiveInt noop =  new PositiveInt(_noop);
+            PositiveInt canc =  new PositiveInt(_canc);
+            PositiveInt ins =   new PositiveInt(_ins);
+            
+            min = noop.getValue();
+            if(canc.getValue() < min)   min = canc.getValue();
+            if(ins.getValue() < min)    min = ins.getValue();
+            
+        }catch(PositiveInt.PosIntException e){
+            System.err.println(e.getMessage());
+            min = -1;
+        }
+        
+        return min;
+    }
     
+    /**
+     * classe che rappresenta un intero non negativo
+     */
+    private class PositiveInt{
+        private int value;
+        
+        public PositiveInt(int n) throws PosIntException{
+            if(n >= 0)
+                this.value = n;
+            else throw new PosIntException("Value must be non negative");
+        }
+        
+        public int getValue(){
+            return this.value;
+        }
+        
+        
+        
+        /**
+         * eccezione lanciata quando si cerca di inizializzare
+         * un PositiveInt con un valore negativo
+         */
+        class PosIntException extends Exception {
+
+            public PosIntException(String message) {
+                super(message);
+            }
+
+        }
+    }
     
 }
