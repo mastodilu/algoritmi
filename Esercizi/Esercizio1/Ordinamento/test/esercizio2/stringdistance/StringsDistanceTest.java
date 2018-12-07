@@ -32,27 +32,58 @@ public class StringsDistanceTest {
      */
     @Test
     public void testEditDistance() {
-//        System.out.println("editDistance");
-//        String s1 = "";
-//        String s2 = "";
-//        StringsDistance instance = new StringsDistance();
-//        int expResult = 0;
-//        int result = instance.editDistance(s1, s2);
-//        assertEquals(expResult, result);
-//        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+        StringsDistance instance;
+        String s1, s2;
+        int result, expResult;
+                
+        //test 1
+        System.out.println("editDistance");
+        s1 = "CASA";
+        s2 = "CANE";
+        instance = new StringsDistance();
+        expResult = 4;
+        result = instance.evaluateDistance(s1, s2);
+        assertEquals(expResult, result);
+        System.out.println("edit distance CASA CANE " + result);
+        
+        //test 2
+        System.out.println("editDistance");
+        s1 = "CIAO";
+        s2 = "";
+        instance = new StringsDistance();
+        expResult = 4;
+        result = instance.evaluateDistance(s1, s2);
+        System.out.println("edit distance CIAO '' " + result);
+        assertEquals(expResult, result);
+        
+        //test 3
+        System.out.println("editDistance");
+        s1 = "";
+        s2 = "";
+        instance = new StringsDistance();
+        expResult = 0;
+        result = instance.evaluateDistance(s1, s2);
+        System.out.println("edit distance '' '' " + result);
+        assertEquals(expResult, result);
+        
+        //test 4
+        System.out.println("editDistance");
+        s1 = "casa";
+        s2 = "casasa";
+        instance = new StringsDistance();
+        expResult = 2;
+        result = instance.evaluateDistance(s1, s2);
+        System.out.println("edit distance casa casasa " + result);
+        assertEquals(expResult, result);
+        
+        //test 5
+        System.out.println("editDistance");
+        s1 = "casa";
+        s2 = "cassa";
+        instance = new StringsDistance();
+        expResult = 1;
+        result = instance.evaluateDistance(s1, s2);
+        System.out.println("edit distance casa cassa " + result);
+        assertEquals(expResult, result);
     }
-
-    /**
-     * Test of rest method, of class StringsDistance.
-     */
-    @Test
-    public void testRest() {
-        System.out.println("rest");
-        StringsDistance instance = new StringsDistance();
-        String expected = "IAO";
-        String result = instance.rest("CIAO");
-        assertEquals(result, expected);
-    }
-    
 }
