@@ -9,6 +9,7 @@ package main;
 import esercizio1.algoritmi.InsertionSort;
 import esercizio1.algoritmi.MergeSort;
 import esercizio1.algoritmi.SumsFinder;
+import esercizio2.stringdistance.LennonWords;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -44,19 +45,21 @@ public class MainClass {
     public static void main(String[] args) {
         
         //lettura da file integers.csv
-        al = new ArrayList<Long>();
-        openIntegers();
-        readIntegers();
-        close();
+//        al = new ArrayList<Long>();
+//        openIntegers();
+//        readIntegers();
+//        close();
 
-        System.out.println(al.size() + " elements in the array");
-        System.out.println("Start sorting");
+//        System.out.println(al.size() + " elements in the array");
+//        System.out.println("Start sorting");
         
-        insertionSort();
+//        insertionSort();
 //        mergeSort();
 //        findSums();
         
-        System.out.println("Done sorting");
+//        System.out.println("Done sorting");
+
+        correctLennonWords();
     }
     
     
@@ -158,5 +161,15 @@ public class MainClass {
         SumsFinder sumsFinder = new SumsFinder(al, sumslist);
         sumsFinder.findAddends();
         System.out.println(sumsFinder.getSumList().toString());
+    }
+    
+    
+    
+    /**
+     * esegue la classe che legge il dizionario, le parole di Lennon
+     * e propone delle correzioni.
+     */
+    private static void correctLennonWords(){
+        LennonWords lennon = new LennonWords();
     }
 }
