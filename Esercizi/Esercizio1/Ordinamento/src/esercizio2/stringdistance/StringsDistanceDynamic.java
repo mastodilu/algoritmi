@@ -187,4 +187,75 @@ public class StringsDistanceDynamic {
     private void printCurrentStatus(String op, String s1, String s2){
         System.out.println(op + " - " + s1 + ", " + s2);
     }
+    
+    
+    public void printMinimumCosts(){
+        int len1 = this.str1.length();
+        int len2 = this.str2.length();
+        System.out.println("Matrix minimum costs");
+        for(int i = 0; i < len1; i++){
+            for(int j = 0; j < len2; j++){
+                System.out.print(this.minimumCosts[i][j] + "\t\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
+
+    }
+    
+    public void printCancCosts(){
+        int len1 = this.str1.length();
+        int len2 = this.str2.length();
+        System.out.println("Matrix canc");
+        for(int i = 0; i < len1; i++){
+            for(int j = 0; j < len2; j++){
+                System.out.print(this.cancCosts[i][j] + "\t\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+    
+    public void printInsCosts(){
+        int len1 = this.str1.length();
+        int len2 = this.str2.length();
+        System.out.println("Matrix ins");
+        for(int i = 0; i < len1; i++){
+            for(int j = 0; j < len2; j++){
+                System.out.print(this.insCosts[i][j] + "\t\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+    
+    
+    public void printNoopCosts(){
+        int len1 = this.str1.length();
+        int len2 = this.str2.length();
+        System.out.println("Matrix noop");
+        for(int i = 0; i < len1; i++){
+            for(int j = 0; j < len2; j++){
+                if(this.noopCosts[i][j] == Integer.MAX_VALUE)
+                    System.out.print(this.noopCosts[i][j] + "\t");
+                else System.out.print(this.noopCosts[i][j] + "\t\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+    
+    
+    public void printMinOpType(){
+        int len1 = this.str1.length();
+        int len2 = this.str2.length();
+        System.out.println("Matrix min op type");
+        for(int i = 0; i < len1; i++){
+            for(int j = 0; j < len2; j++){
+                System.out.print(this.minimumOperationType[i][j] + "\t\t");
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
 }

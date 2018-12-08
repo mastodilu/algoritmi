@@ -75,12 +75,17 @@ public class StringsDistanceDynamicTest {
         
         //test 5
         s1 = "casa";
-        s2 = "cavalluccio";
+        s2 = "carta";
         instance = new StringsDistanceDynamic(s1,s2);
-        expResult = 9;
+        expResult = 3;
         result = instance.evaluateDistance();
-        System.out.println("edit distance dyn casa cavalluccio " + result);
+        System.out.println("edit distance dyn casa carta " + result);
         assertEquals(expResult, result);
+//        instance.printMinOpType();
+//        instance.printMinimumCosts();
+//        instance.printNoopCosts();
+//        instance.printCancCosts();
+//        instance.printInsCosts();
     }
     
 }
