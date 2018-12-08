@@ -171,5 +171,6 @@ public class MainClass {
      */
     private static void correctLennonWords(){
         LennonWords lennon = new LennonWords();
+        lennon.startCorrection();
     }
 }

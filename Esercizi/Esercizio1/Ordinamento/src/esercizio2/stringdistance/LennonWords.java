@@ -147,6 +147,37 @@ public class LennonWords {
             System.err.println("Unable to close stream.");
         }
     }
+    
+    
+    
+    
+    /**
+     * propone le correzioni alle parole lette
+     */
+    public void startCorrection(){
+        int minEditDistance;
+        StringsDistanceDynamic instance;
+        ArrayList<String> corrections;
+        
+        for(String lennonSaid : this.lennon){
+            System.out.println("Correct \"" + lennonSaid + "\" with:");
+            corrections = new ArrayList<String>();
+            minEditDistance = Integer.MAX_VALUE;
+            for(String dictWord : this.words){
+                instance = new StringsDistanceDynamic(lennonSaid, dictWord);
+                int n = instance.evaluateDistance();
+                if(n < minEditDistance){
+                    minEditDistance = n;
+                    corrections = new ArrayList<String>();
+                    corrections.add(dictWord);
+                }else if(n == minEditDistance){
+                    corrections.add(dictWord);
+                }
+            }
+            for(String s : corrections)
+                System.out.println("> " + s);
+        }
+    }
 
 
 
