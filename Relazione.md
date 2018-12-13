@@ -164,3 +164,57 @@ $$O(m)+O(n)$$
 ### Fallimento
 
 Nonostante i test fossero positivi e i tempi di esecuzione fossero incredibilmente veloci grazie all'impiego delle hashmap, l'algoritmo non e' stato in grado di terminare a causa dell'impiego di troppa memoria per la JVM. Sperimentalmente ho potuto riscontrare che fino a 15 milioni di numeri in input consentono all'algoritmo di terminare positivamente in pochi minuti, ma con 20 milioni di numeri in input la JVM termina la memoria a disposizione. Auentando la memoria riservata alla JVM e' possibile terminare positivamente e molto rapidamente questa parte dell'esercizio.
+
+<div class="pagebreak"></div>
+
+# Esercizio 2 - Parte 1
+
+L'esercizio 2 richiede l'implementazione di una libreria in grado di stabilire la distanza minima di edit per trasformare una parola in un'altra, usando le sole operazioni:
+
+- inserimento
+- cancellazione
+
+La prima versione e' da fare ricorsiva, la seconda deve utilizzare la programmazione dinamica per dimostrarne l'efficienza rispetto alla sola ricorsione.
+
+Entrambe le versioni si basano su 3 funzioni principali che calcolano il costo dell'operazione che rappresentano:
+
+- inserisci un carattere: `insEditDistance`<br>
+- cancella un carattere: `cancEditDistance`<br>
+- ignora il carattere corrente e passa al successivo: `noopEditDistance`<br>
+
+### Costi
+
+Inserimento e cancellazione costano 1 + i costi dei sottoproblemi successivi, mentre ignorare il carattere costa 0 + i costi dei sottoproblemi successivi, ma solo se i caratteri considerati sono uguali, altrimenti ignorare il carattere ha costo infinito in quanto non e' un'operazione fattibile.
+
+## `EditDistance` ricorsivo
+
+Questa versione calcola ricorsivamente il costo di edit senza sfruttare strutture dati in cui salvare gli esiti delle iterazioni. La stessa funzione con lo stesso input puo' essere richiamata numerose volte sprecando CPU inutilmente.
+
+## `EditDistance` con la programmazione dinamica
+
+Questa versione calcola ricorsivamente il costo di edit tra due stringhe ma usa delle strutture dati di supporto in cui salvare i costi delle iterazioni mano a mano che vengono effettuate, in modo da evitare di reiterare la stessa funzione con lo stesso input piu' di una volta.
+
+Vengono utilizzare delle tabelle coi costi minimi dell'iterazione alla posizione `[i][j]`, una per ogni operazione (inserimento, cancellazione, passaggio al carattere successivo) grandi `m` x `n`, con `m` e `n` pari alla lunghezza delle due stringhe - 1.
+
+La posizione `[i][j]` rappresenta l'operazione effettuata quando `s1` e' lunga `i+1` e `s2` e' lunga `j+1`. Prima di eseguire la funzione viene controllato che il suo valore non sia già stato scritto in tabella: se esiste viene letto,altrimenti viene calcolato e successivamente salvato.
+
+# Esercizio 2 - Parte 2
+
+Viene chiesto di correggere ogni parola del file "correctme.txt" con le parole che hanno edit distance minino nel file "dictionary.txt".
+
+Testando 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
