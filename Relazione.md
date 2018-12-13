@@ -196,25 +196,15 @@ Questa versione calcola ricorsivamente il costo di edit tra due stringhe ma usa 
 
 Vengono utilizzare delle tabelle coi costi minimi dell'iterazione alla posizione `[i][j]`, una per ogni operazione (inserimento, cancellazione, passaggio al carattere successivo) grandi `m` x `n`, con `m` e `n` pari alla lunghezza delle due stringhe - 1.
 
-La posizione `[i][j]` rappresenta l'operazione effettuata quando `s1` e' lunga `i+1` e `s2` e' lunga `j+1`. Prima di eseguire la funzione viene controllato che il suo valore non sia già stato scritto in tabella: se esiste viene letto,altrimenti viene calcolato e successivamente salvato.
+La posizione `[i][j]` rappresenta l'operazione effettuata quando `s1` e' lunga `i+1` e `s2` e' lunga `j+1`. Prima di eseguire la funzione viene controllato che il suo valore non sia giï¿½ stato scritto in tabella: se esiste viene letto,altrimenti viene calcolato e successivamente salvato.
 
 # Esercizio 2 - Parte 2
 
 Viene chiesto di correggere ogni parola del file "correctme.txt" con le parole che hanno edit distance minino nel file "dictionary.txt".
 
-Testando 
+Testando questo algoritmo con l'algoritmo ricorsivo il tempo richiesto per correggere la prima parola e' circa di 4 minuti, ma usando la versione che sfrutta la programmazione dinamica viene impiegata la meta' del tempo per correggere ogni parola della citazione e terminare correttamente.
 
+## Complessita'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Versione ricorsiva: `O(m` x `n log n)`
+- Versione che usa la programmazione dinamica: e' inferiore perche' spesso serve solo leggere il dato salvato in tabella con complessita' `O(1)`. 
