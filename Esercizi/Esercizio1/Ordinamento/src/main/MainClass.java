@@ -25,10 +25,10 @@ public class MainClass {
      * path del file da aprire
      */
     private static final String PATH = "C:\\Users\\masto\\Documents\\MieiProgetti\\Algoritmi_file_enormi\\Esercizio1\\integers.csv";
-//    private static final String PATH = "C:\\Users\\MatteoDiLucchio\\Documents\\Algoritmi\\Algoritmi file enormi\\Esercizio1\\integers.csv";
     private static final String PATH_SUMS = "C:\\Users\\masto\\Documents\\MieiProgetti\\Algoritmi_file_enormi\\Esercizio1\\sums.txt";
     static BufferedReader br;
     static FileReader fr;
+    
     /**
      * arraylist dei numeri letti da file integers.csv
      */
@@ -44,24 +44,35 @@ public class MainClass {
      */
     public static void main(String[] args) {
         
+        //start1();
+        start2();
+//        start3();
+//        start4();
+
+        
+    }
+    
+    //avvia il primo esercizio
+    private static void start1(){
         //lettura da file integers.csv
-//        al = new ArrayList<Long>();
-//        openIntegers();
-//        readIntegers();
-//        close();
-
-//        System.out.println(al.size() + " elements in the array");
-//        System.out.println("Start sorting");
+        al = new ArrayList<Long>();
+        openIntegers();
+        readIntegers();
+        close();
         
-//        insertionSort();
-//        mergeSort();
-//        findSums();
+        System.out.println(al.size() + " elements in the array");
         
-//        System.out.println("Done sorting");
-
+        insertionSort();
+        //mergeSort();
+        //findSums();
+    }
+    
+    private static void start2(){
         correctLennonWords();
     }
     
+    private static void start3(){}
+    private static void start4(){}
     
     /**
      * stampa ogni numero contenuto nell'array
@@ -121,9 +132,10 @@ public class MainClass {
       * avvia l'algoritmo di ordinamento insertion sort
       */
     private static void insertionSort() {
+        System.out.println("Start sorting");
         InsertionSort<Long> is = new InsertionSort<Long>(al);
-        is.sortAscending();
-//        is.sortDescending();
+        //is.sortAscending();
+        is.sortDescending();
     }
     
     
@@ -132,9 +144,10 @@ public class MainClass {
       * avvia l'algoritmo di ordinamento insertion sort
       */
     private static void mergeSort() {
+        System.out.println("Start sorting");
         MergeSort<Long> is = new MergeSort<Long>(al);
-        is.sortAscending();
-//        is.sortDescending();
+        //is.sortAscending();
+        is.sortDescending();
     }
     
     
@@ -157,7 +170,7 @@ public class MainClass {
         }
         
         close();
-        
+        System.out.println("Sums finder");
         SumsFinder sumsFinder = new SumsFinder(al, sumslist);
         sumsFinder.findAddends();
         System.out.println(sumsFinder.getSumList().toString());

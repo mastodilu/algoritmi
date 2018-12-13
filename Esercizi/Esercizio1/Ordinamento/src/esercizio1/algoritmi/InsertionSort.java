@@ -34,10 +34,19 @@ public class InsertionSort<T extends Comparable>{
         }
         
     	int minIndex = 0;
+        int onePercent = 0, percentage = 1, done = 1;
+        if(this.array.size() > 99)
+            onePercent = this.array.size() / 100;
         
         //comincia a riordinare partendo dal secondo elemento dell'array
-        for(int i = 1; i < this.array.size(); i++)
+        for(int i = 1; i < this.array.size(); i++){
             recursiveSortAscending(i, minIndex, i-1 );
+            done++;
+            if(done == onePercent){
+                System.out.println(percentage++ + "% done");
+                done = 0;
+            }
+        }
     }
     
     
@@ -49,11 +58,21 @@ public class InsertionSort<T extends Comparable>{
             return;
         }
         
-    	int minIndex = 0;
+        int minIndex = 0;
+        int onePercent = 0, percentage = 1, done = 1;
+        if(this.array.size() > 99)
+            onePercent = this.array.size() / 100;
         
         //comincia a riordinare partendo dal secondo elemento dell'array
-        for(int i = 1; i < this.array.size(); i++)
+        for(int i = 1; i < this.array.size(); i++){
             recursiveSortDescending(i, minIndex, i-1 );
+            done++;
+            if(done == onePercent){
+                System.out.println(percentage++ + "% done");
+                done = 0;
+            }
+        }
+            
     }
     
     

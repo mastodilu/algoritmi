@@ -44,6 +44,7 @@ public class MergeSort<T extends Comparable>{
             return;
         
         this.ascending = true;
+        System.out.println("Merge sort");
         mergeSort(0, size-1);
     }
     
@@ -61,6 +62,7 @@ public class MergeSort<T extends Comparable>{
             return;
         
         this.ascending = false;
+        System.out.println("Merge sort");
         mergeSort(0, size-1);
     }    
     
