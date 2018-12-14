@@ -49,7 +49,8 @@ public class HeapElement<T extends Comparable> {
      * @return true se hanno uguale contenuto e priorita'; false altrimenti.
      */
     public boolean isEqualTo(HeapElement other){
-        return this.content == other.content && this.priority == other.priority;
+        return (this.content.compareTo(other.content) == 0)
+                && this.priority == other.priority;
     }
     
     
