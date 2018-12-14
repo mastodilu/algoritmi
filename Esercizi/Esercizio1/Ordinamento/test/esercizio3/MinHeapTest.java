@@ -35,6 +35,7 @@ public class MinHeapTest {
     @Test
     public void testPrior() {
         testInsert();
+        testStringAndPriority();
     }
     
     
@@ -71,7 +72,34 @@ public class MinHeapTest {
         }
         
     }
-        
+    
+
+    private void testStringAndPriority() {
+        System.out.println("Test MaxHeap with Strings");
+        MinHeap minh = new MinHeap();
+        ArrayList<HeapElement> expected = new ArrayList<HeapElement>();
+        try{
+            minh.heapInsert(new HeapElement("miao", 0));
+            minh.heapInsert(new HeapElement("miao", 2));
+            minh.heapInsert(new HeapElement("ciao",1));
+            minh.heapInsert(new HeapElement("ciao", 3));
+            minh.heapInsert(new HeapElement("CASTORO",0));
+            minh.heapInsert(new HeapElement("asdasd", 0));
+
+            System.out.println(minh.toString());
+            
+            expected.add(new HeapElement("CASTORO",0));
+            expected.add(new HeapElement("miao",0));
+            expected.add(new HeapElement("asdasd",0));
+            expected.add(new HeapElement("ciao",3));
+            expected.add(new HeapElement("miao",2));
+            expected.add(new HeapElement("ciao",1));
+            
+            compareArrayList(minh.getElements(), expected);
+        }catch(NullContentException e){
+            System.err.println(e.getMessage());
+        }
+    }
         
         
         

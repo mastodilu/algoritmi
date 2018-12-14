@@ -35,9 +35,8 @@ public class MaxHeapTest {
     @Test
     public void testPrior() {
         testArray();
-//        testEmpty();
-//        testString();
-//        testStringAndPriority();
+        testEmpty();
+        testString();
     }
     
     private void testArray(){
@@ -54,7 +53,6 @@ public class MaxHeapTest {
                 new HeapElement(1)
                 };
             ArrayList<HeapElement> expected = new ArrayList<HeapElement>();
-            //expected.add(null); // nello heap il primo elemento e' sempre null
             expected.add(new HeapElement(9));
             expected.add(new HeapElement(8));
             expected.add(new HeapElement(5));
@@ -74,21 +72,36 @@ public class MaxHeapTest {
     
     private void testEmpty() {
         System.out.println("Test MaxHeap with empty data");
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        MaxHeap maxh = new MaxHeap();
+        maxh.heapInsert(null);
+        maxh.heapInsert(null);
+        maxh.heapInsert(null);
+        ArrayList<HeapElement> expected = new ArrayList<HeapElement>();
+        compareArrayList(maxh.getElements(), expected);
     }
     
 
     private void testString() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Test MaxHeap with Strings");
+        MaxHeap maxh = new MaxHeap();
+        try{
+            maxh.heapInsert(new HeapElement("miao"));
+            maxh.heapInsert(new HeapElement("ciao"));
+            maxh.heapInsert(new HeapElement("CASTORO"));
+            ArrayList<HeapElement> expected = new ArrayList<HeapElement>();
+            expected.add(new HeapElement("miao"));
+            expected.add(new HeapElement("ciao"));
+            expected.add(new HeapElement("CASTORO"));
+            compareArrayList(maxh.getElements(), expected);
+        }catch(NullContentException e){
+            System.err.println(e.getMessage());
+        }
     }
     
 
-    private void testStringAndPriority() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     
+
     
     private void compareArrayList(ArrayList<HeapElement> first, ArrayList<HeapElement> second){
         assertEquals(first.size(), second.size());
