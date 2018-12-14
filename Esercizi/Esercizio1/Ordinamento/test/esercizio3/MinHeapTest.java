@@ -55,7 +55,6 @@ public class MinHeapTest {
             minh.heapInsert(new HeapElement(2));
             minh.heapInsert(new HeapElement(1));
 
-            expected.add(null); // nello heap il primo elemento e' sempre null
             expected.add(new HeapElement(1));
             expected.add(new HeapElement(1));
             expected.add(new HeapElement(2));
@@ -78,7 +77,7 @@ public class MinHeapTest {
         
     private void compareArrayList(ArrayList<HeapElement> first, ArrayList<HeapElement> second){
         assertEquals(first.size(), second.size());
-        for(int i = 1; i < first.size(); i++){
+        for(int i = 0; i < first.size(); i++){
             HeapElement one = first.get(i), two = second.get(i);
             if(!first.get(i).isEqualTo(second.get(i)))
                 fail("Heap elements are different.");

@@ -61,13 +61,18 @@ public abstract class Heap<T extends Comparable> {
     
     
     
+    /**
+     * Restituisce una copia di "elements" senza il null node.
+     */
     public ArrayList<HeapElement> getElements(){
-        return this.elements;
+        ArrayList<HeapElement> temp = new ArrayList<HeapElement>();
+        for(int i = 1; i < this.elements.size(); i++)
+            temp.add(this.elements.get(i));
+        return temp;
     }
     
     
     public void heapInsert(HeapElement elem){
-        System.out.println("HeapInsert -> " + elem.toString());
         //inserimento in coda
         this.elements.add(elem);
         int elemIndex = this.elements.size()-1;
