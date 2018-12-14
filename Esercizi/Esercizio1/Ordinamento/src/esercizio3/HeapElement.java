@@ -10,21 +10,29 @@ package esercizio3;
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
 public class HeapElement<T extends Comparable> {
-    private T label;
+    private T content;
     private int priority;
     
     public HeapElement(T label, int priority){
-        this.label = label;
+        this.content = label;
         this.priority = priority;
     }
     
     public HeapElement(T label){
-        this.label = label;
+        this.content = label;
         this.priority = 0;
     }
     
     protected void updatePriority(int priority){
         this.priority = priority;
+    }
+    
+    public T getContent(){
+        return this.content;
+    }
+    
+    public int getPriority(){
+        return this.priority;
     }
     
     
