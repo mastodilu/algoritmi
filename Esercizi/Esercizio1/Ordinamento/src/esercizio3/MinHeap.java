@@ -56,17 +56,10 @@ public class MinHeap extends Heap{
         if(second.getPriority() < first.getPriority() )
             return second;
         
-        //contenuto    
-        switch(first.getContent().compareTo(second.getContent())){
-            case 1:
-                return second;
-            case 0:
-            case -1:
-                return first;
-            default:
-                System.err.println("Cannot compare content of heap elements.");
-                return null;
-        }
+        //contenuto
+        if(first.getContent().compareTo(second.getContent()) <= 0)
+            return first;
+        return second;
     }
     
 }
