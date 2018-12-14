@@ -17,12 +17,21 @@ public class MaxHeap extends Heap{
      * e' piu' alto.
      * A parita' di priorita' si confronta il contenuto.
      * 
+     * Se entrambi i parametri sono null allora restituisce null
+     * Se first e' null restituisce second
+     * Se second e' null restituisce first
+     * 
      * @param first 
      * @param second
      * @return l'elemento di priorita' maggiore.
+     * 
      */
     @Override
-    public HeapElement comparePriority(HeapElement first, HeapElement second) {
+    public HeapElement prior(HeapElement first, HeapElement second) {
+        //controllo valori null
+        if(first == null && second == null)     return null;
+        if(first == null)                       return second;
+        if(second == null)                      return first;
         
         //priorita'
         if(first.getPriority() > second.getPriority() )
@@ -41,7 +50,6 @@ public class MaxHeap extends Heap{
                 System.err.println("Cannot compare content of heap elements.");
                 return null;
         }
-        
     }
     
 }
