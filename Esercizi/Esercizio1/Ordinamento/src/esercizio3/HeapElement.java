@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Singolo elemento che compone la coda Heap.
+ * Il parametro T deve implementare l'interfaccia Comparable
+ * altrimenti non e' possibile calcolare la priorita' correttamente.
  */
 package esercizio3;
 
@@ -23,6 +23,10 @@ public class HeapElement<T extends Comparable> {
         this.priority = 0;
     }
     
+    /**
+     * Aggiorna il valore priorita' dell'istanza corrente.
+     * @param priority 
+     */
     protected void updatePriority(int priority){
         this.priority = priority;
     }
@@ -33,6 +37,21 @@ public class HeapElement<T extends Comparable> {
     
     public int getPriority(){
         return this.priority;
+    }
+    
+    /**
+     * Confronta due heap element.
+     * @param other lo heap element con cui confrontare l'istanza corrente.
+     * @return true se hanno uguale contenuto e priorita'; false altrimenti.
+     */
+    public boolean isEqualTo(HeapElement other){
+        return this.content == other.content && this.priority == other.priority;
+    }
+    
+    
+    @Override
+    public String toString(){
+        return content.toString() + " (" + priority + ")";
     }
     
     
