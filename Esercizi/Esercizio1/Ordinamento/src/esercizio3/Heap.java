@@ -300,7 +300,7 @@ public abstract class Heap<T extends Comparable> {
     public String toString(){
         String s = "";
         for(int i = 1; i <= size(); i++){
-            s += this.elements.get(i) + " " + null;
+            s += this.elements.get(i) + " ";
         }
         return s;
     }
