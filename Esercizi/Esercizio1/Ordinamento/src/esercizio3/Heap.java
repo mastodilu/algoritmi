@@ -30,7 +30,7 @@ public abstract class Heap<T extends Comparable> {
      */
     public Heap(ArrayList<HeapElement> elements){
         this.elements = new ArrayList<HeapElement>(); // nuovo arraylist
-        this.elements.add(0, new HeapElement(null)); // primo elemento null
+        this.elements.add(0, null); // primo elemento null
         for(HeapElement elem : elements)//aggiunge ogni elemento nella giusta posizione
             this.heapInsert(elem);
     }
@@ -43,7 +43,7 @@ public abstract class Heap<T extends Comparable> {
      */
     public Heap(HeapElement[] elements){
         this.elements = new ArrayList<HeapElement>();
-        this.elements.add(new HeapElement(null));
+        this.elements.add(null);
         for(HeapElement elem : elements){
             this.heapInsert(elem);
         }
@@ -56,7 +56,7 @@ public abstract class Heap<T extends Comparable> {
      */
     public Heap(){
         elements = new ArrayList<HeapElement>();
-        elements.add(new HeapElement(null)); // primo elemento null
+        elements.add(null); // primo elemento null
     }
     
     

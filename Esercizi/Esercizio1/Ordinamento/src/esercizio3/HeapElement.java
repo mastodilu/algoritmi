@@ -5,6 +5,8 @@
  */
 package esercizio3;
 
+import esercizio3.heapelementexceptions.NullContentException;
+
 /**
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
@@ -13,13 +15,15 @@ public class HeapElement<T extends Comparable> {
     private T content;
     private int priority;
     
-    public HeapElement(T label, int priority){
-        this.content = label;
+    public HeapElement(T content, int priority) throws NullContentException{
+        if(content == null)   throw new NullContentException();
+        this.content = content;
         this.priority = priority;
     }
     
-    public HeapElement(T label){
-        this.content = label;
+    public HeapElement(T content) throws NullContentException{
+        if(content == null)   throw new NullContentException();
+        this.content = content;
         this.priority = 0;
     }
     
