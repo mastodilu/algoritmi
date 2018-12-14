@@ -5,11 +5,26 @@
  */
 package esercizio3;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
 public class MinHeap extends Heap{
+    
+    public MinHeap(ArrayList<HeapElement> elements){
+        super(elements);
+    }
+    
+    
+    public MinHeap(HeapElement[] elements){
+        super(elements);
+    }
+    
+    public MinHeap(){
+        super();
+    }
 
     /**
      * Confonta i due elementi passati come parametri e restituisce quello di

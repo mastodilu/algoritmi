@@ -3,12 +3,29 @@
  */
 package esercizio3;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
 public class MaxHeap extends Heap{
 
+    
+    public MaxHeap(ArrayList<HeapElement> elements){
+        super(elements);
+    }
+    
+    
+    public MaxHeap(HeapElement[] elements){
+        super(elements);
+    }
+    
+    public MaxHeap(){
+        super();
+    }
+    
+    
     /**
      * Confonta i due elementi passati come parametri e restituisce quello di
      * priorita' maggiore, cioe' quello che si muove verso l'alto nello heap.

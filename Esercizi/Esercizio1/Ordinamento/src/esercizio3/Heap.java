@@ -60,17 +60,26 @@ public abstract class Heap<T extends Comparable> {
     }
     
     
+    
+    public ArrayList<HeapElement> getElements(){
+        return this.elements;
+    }
+    
+    
     public void heapInsert(HeapElement elem){
+        System.out.println("HeapInsert -> " + elem.toString());
         //inserimento in coda
         this.elements.add(elem);
-        int childIndex = this.elements.size()-1;
+        int elemIndex = this.elements.size()-1;
         //risalita verso l'olimpo
         try{
             //se elem ha priorita' maggiore allora deve risalire
-            while(this.prior(parent(childIndex), elem) == elem){
-                int parentIndex = this.getParentIndex(childIndex);
-                this.swap(childIndex, parentIndex);
+            while(this.prior(parent(elemIndex), elem) == elem){
+                int parentIndex = this.getParentIndex(elemIndex);
+                this.swap(elemIndex, parentIndex);
+                elemIndex = parentIndex;
             }
+            
         }catch(IndexOutOfHeapException e){
             //do nothing - node is root
         }
