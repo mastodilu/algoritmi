@@ -73,6 +73,11 @@ public abstract class Heap<T extends Comparable> {
     
     
     public void heapInsert(HeapElement elem){
+        if(elem == null){
+            System.err.println("Can't heapInsert null HeapElement.");
+            return;
+        }
+        
         //inserimento in coda
         this.elements.add(elem);
         int elemIndex = this.elements.size()-1;
