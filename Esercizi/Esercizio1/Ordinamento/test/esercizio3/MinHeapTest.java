@@ -34,8 +34,8 @@ public class MinHeapTest {
      */
     @Test
     public void testPrior() {
-//        testInsert();
-//        testStringAndPriority();
+        testInsert();
+        testStringAndPriority();
     }
     
     
@@ -57,8 +57,6 @@ public class MinHeapTest {
             minh.heapInsert(new HeapElement(1));
 
             ArrayList<HeapElement> sorted = minh.heapSort();
-            for(HeapElement item : sorted)
-                System.out.println(item.toString());
             
             expected.add(new HeapElement(1));
             expected.add(new HeapElement(2));
@@ -122,8 +120,6 @@ public class MinHeapTest {
             minh.heapInsert(new HeapElement("CASTORO",0));
             minh.heapInsert(new HeapElement("asdasd", 0));
 
-            System.out.println(minh.toString());
-            
             expected.add(new HeapElement("CASTORO",0));
             expected.add(new HeapElement("miao",0));
             expected.add(new HeapElement("asdasd",0));

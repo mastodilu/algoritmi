@@ -61,8 +61,9 @@ public class MaxHeapTest {
             expected.add(new HeapElement(1));
             expected.add(new HeapElement(2));
             expected.add(new HeapElement(1));
+            
             MaxHeap maxh = new MaxHeap(array);
-            System.out.println("Array: " + maxh.toString());
+            
             compareArrayList(maxh.getElements(), expected);
         }catch(NullContentException e){
             System.err.println(e.getMessage());
@@ -98,6 +99,41 @@ public class MaxHeapTest {
         }
     }
     
+    
+    
+    @Test
+    public void testHeapSort(){
+        System.out.println("Test MaxHeap heapsort");
+        ArrayList<HeapElement> input, expected;
+        input = new ArrayList<HeapElement>();
+        expected = new ArrayList<HeapElement>();
+        
+        MaxHeap maxh = new MaxHeap(input);
+        try{
+            maxh.heapInsert(new HeapElement(3));
+            maxh.heapInsert(new HeapElement(5));
+            maxh.heapInsert(new HeapElement(9));
+            maxh.heapInsert(new HeapElement(4));
+            maxh.heapInsert(new HeapElement(8));
+            maxh.heapInsert(new HeapElement(2));
+            maxh.heapInsert(new HeapElement(1));
+
+            ArrayList<HeapElement> sorted = maxh.heapSort();
+            
+            expected.add(new HeapElement(9));
+            expected.add(new HeapElement(8));
+            expected.add(new HeapElement(5));
+            expected.add(new HeapElement(4));
+            expected.add(new HeapElement(3));
+            expected.add(new HeapElement(2));
+            expected.add(new HeapElement(1));
+
+            compareArrayList(sorted, expected);
+        }catch(NullContentException e){
+            System.err.println(e.getMessage());
+        }
+    }
+    
 
     
     
@@ -107,7 +143,6 @@ public class MaxHeapTest {
         assertEquals(first.size(), second.size());
         for(int i = 0; i < first.size(); i++){
             HeapElement one = first.get(i), two = second.get(i);
-            System.out.println(one.toString() + " = " + two.toString());
             if(!first.get(i).isEqualTo(second.get(i)))
                 fail("heap elements are different.");
         }
