@@ -146,7 +146,7 @@ public abstract class Heap<T extends Comparable> {
      * @throws IndexOutOfHeapException se non ha figlio destro
      */
     public int right(int index) throws IndexOutOfHeapException{
-        if(2*index + 1 > this.elements.size())
+        if(2*index + 1 >= this.elements.size())
             throw new IndexOutOfHeapException();
         return 2*index + 1;
     }
@@ -163,6 +163,26 @@ public abstract class Heap<T extends Comparable> {
     
     
     
+    public ArrayList<HeapElement> heapSort(){
+        
+        ArrayList<HeapElement> result = new ArrayList<HeapElement>();
+        try{
+            int length = this.elements.size();
+            for(int i = 1; i < length; i++){
+                System.out.println(toString());
+                HeapElement elem = this.heapExtract();
+                System.out.println("Ho estratto " + elem.toString());
+                result.add(elem);
+            }
+                
+        }catch(IndexOutOfHeapException e){
+            System.err.println(this.elements.size() + " -- " + e.getMessage());
+        }
+        return result;
+    }
+    
+    
+    
     
     
     /**
@@ -173,7 +193,12 @@ public abstract class Heap<T extends Comparable> {
     }
     
     
-    
+    /**
+     * Estrae il primo elemento dallo heap senza romperne la struttura e 
+     * mantenendo la relazione d'ordinamento.
+     * @return
+     * @throws IndexOutOfHeapException 
+     */
     public HeapElement extractFirst() throws IndexOutOfHeapException{
         //il primo elemento e' sempre vuoto e corregge gli indici
         if(this.elements.size() <= 1)   throw new IndexOutOfHeapException();
@@ -193,20 +218,24 @@ public abstract class Heap<T extends Comparable> {
             return elem;
         }
         
+        //ci sono piu' di 3 elementi veri: e' un albero
         HeapElement head = this.elements.get(1);
-        // elements . size > 3
         int parentIndex = 1; // inizialmente coincide con root (non conta il null node iniziale)
         this.swap(parentIndex, this.elements.size()-1); // scambia primo e ultimo
-        //scendi verso il meno prioritario dei figli
+        //sale il figlio piu' prioritario
         boolean stop = false;
         while(hasLeftChild(parentIndex) && !stop){
+            
             int leftIndex = left(parentIndex);
+//            System.out.println("left index: " + leftIndex);
+//            System.out.println("parent index: " + parentIndex);
             HeapElement leftChild = this.elements.get(leftIndex);
             HeapElement parent = this.elements.get(parentIndex);
             //caso 1. ci sono entrambi i figli --> controlla entrambi e prendi quello prioritario per il confronto col parent
             if(hasRightChild(parentIndex)){
                 //faccio salire il figlio piu' prioritario
                 int rightIndex = right(parentIndex);
+//                System.out.println("if right index: " + rightIndex);
                 HeapElement rightChild = this.elements.get(rightIndex);
                 HeapElement priorChild = prior(leftChild, rightChild);
                 int indexPrior = (priorChild == leftChild) ? leftIndex : rightIndex;
@@ -219,9 +248,9 @@ public abstract class Heap<T extends Comparable> {
             else{
             //caso 2. c'e' solo il figlio sinistro --> controlla il sinistro ed eventualmente scambia
                 if(prior(leftChild, parent) == leftChild){
-                    int indexPrior = leftIndex;
-                    swap(parentIndex, indexPrior);
-                    parentIndex = indexPrior;
+                    swap(parentIndex, leftIndex);
+                    parentIndex = leftIndex;
+                    stop = true;
                 }
             }
         }
@@ -230,6 +259,47 @@ public abstract class Heap<T extends Comparable> {
         return head;
     }
 
+    
+    
+    public HeapElement heapExtract()throws IndexOutOfHeapException{
+        System.out.println("Extract");
+        if(size() == 0 )    throw new IndexOutOfHeapException();
+        HeapElement elem;
+        if(size() <= 2) {
+            elem = this.elements.get(1);
+            this.elements.remove(1);
+            return elem;
+        }else{ // ci sono piu' di due HeapElement validi
+            swap(1, size()); // scambia primo e ultimo
+            elem = this.elements.get(size()); // legge in fondo allo heap
+            this.elements.remove(size()); // cancella il valore
+            heapifyDown(1); // ricostruisce heap
+            return elem; 
+        }
+    }
+    
+    
+    
+    private void heapifyDown(int parent){
+        int left,right;
+        try{
+            left = left(parent);
+        }catch(IndexOutOfHeapException e){
+            left=0;
+        }
+        try{
+            right = right(parent);
+        }catch(IndexOutOfHeapException e){
+            right=0;
+        }
+        
+        int priorIndex = prior(parent, right, left);
+        if(priorIndex != parent){
+            swap(parent, priorIndex);
+            heapifyDown(priorIndex);
+        }
+    }
+    
 
     /**
      * Restituisce true se il nodo ha un figlio sinistro.
@@ -266,6 +336,8 @@ public abstract class Heap<T extends Comparable> {
      * @param second indice del secondo elemento da shiftare
      */
     private void swap(int child, int parent){
+        System.out.println("Swap " + this.elements.get(child).getContent()
+                        + " con " + this.elements.get(parent).getContent());
         HeapElement backup = this.elements.get(parent);
         this.elements.set(parent, this.elements.get(child));
         this.elements.set(child, backup);
