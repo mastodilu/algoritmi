@@ -2,7 +2,7 @@
  * Questa classe rappresenta il peso di un collegamento tra due nodi.
  * Il valore deve essere >= 1.
  */
-package esercizio4;
+package esercizio4.graphnode;
 
 /**
  *

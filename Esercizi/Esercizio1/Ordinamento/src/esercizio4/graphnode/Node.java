@@ -7,7 +7,7 @@
  * 
  * 
  */
-package esercizio4;
+package esercizio4.graphnode;
 
 import java.util.ArrayList;
 
