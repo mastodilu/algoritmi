@@ -129,7 +129,7 @@ public class Node<T> {
         s += "Node: " + this.content.toString();
         for(int i = 0; i < this.links.size(); i++){
             s += "\n -> " + this.links.get(i).content.toString() + " : ";
-            s += this.weights.get(i).toString() + "\t";
+            s += this.weights.get(i).toString();
         }
         return s;
     }

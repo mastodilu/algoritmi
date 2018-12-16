@@ -8,7 +8,6 @@ package esercizio4;
 import esercizio4.graphnode.Node;
 import esercizio4.graphnode.NodeException;
 import esercizio4.graphnode.Weight;
-import java.util.ArrayList;
 
 /**
  *

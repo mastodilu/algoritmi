@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
-public class DirectedGraphTest {
+public class NonDirectedGraphTest {
     
-    public DirectedGraphTest() {
+    public NonDirectedGraphTest() {
     }
     
     @BeforeClass
@@ -29,7 +29,7 @@ public class DirectedGraphTest {
     public static void tearDownClass() {
     }
 
-    /**
+        /**
      * Test of addLink method, of class DirectedGraph.
      */
     @Test
@@ -39,7 +39,7 @@ public class DirectedGraphTest {
         Node from = new Node("A");
         Node to = new Node("B");
         Weight weight = new Weight(3d);
-        DirectedGraph instance = new DirectedGraph();
+        NonDirectedGraph instance = new NonDirectedGraph();
         
         instance.addNode(from);
         instance.addNode(to);
@@ -49,7 +49,7 @@ public class DirectedGraphTest {
         
         System.out.println("grado " + instance.grade());
         
-        assertEquals(instance.grade(), 2);
+        assertEquals(instance.grade(), 4);
     }
 
     /**
@@ -62,7 +62,7 @@ public class DirectedGraphTest {
         Node from = new Node("A");
         Node to = new Node("B");
         Weight weight = new Weight(3d);
-        DirectedGraph instance = new DirectedGraph();
+        NonDirectedGraph instance = new NonDirectedGraph();
         
         instance.addNode(from);
         instance.addNode(to);
@@ -70,10 +70,10 @@ public class DirectedGraphTest {
         instance.addLink(from, to, weight);
         instance.addLink(to, from, weight);
         
-        assertEquals(instance.grade(), 2);
+        assertEquals(instance.grade(), 4);
         
         instance.removeLink(from, to);
-        assertEquals(instance.grade(), 1);
+        assertEquals(instance.grade(), 2);
         
         instance.removeLink(to, from);
         assertEquals(instance.grade(), 0);
@@ -85,8 +85,8 @@ public class DirectedGraphTest {
     @Test
     public void testIsDirected() {
         System.out.println("isDirected");
-        DirectedGraph instance = new DirectedGraph();
-        boolean expResult = true;
+        NonDirectedGraph instance = new NonDirectedGraph();
+        boolean expResult = false;
         boolean result = instance.isDirected();
         assertEquals(expResult, result);
     }
@@ -102,14 +102,13 @@ public class DirectedGraphTest {
         Node b = new Node("B");
         Node c = new Node("C");
         Weight weight = new Weight(3d);
-        DirectedGraph instance = new DirectedGraph();
+        NonDirectedGraph instance = new NonDirectedGraph();
         
         instance.addNode(a);
         instance.addNode(b);
         instance.addNode(c);
         
         instance.addLink(a, b, weight);
-        instance.addLink(b, a, weight);
         instance.addLink(b, c, weight);
         System.out.println(instance.toString());
     }

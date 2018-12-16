@@ -72,6 +72,8 @@ public abstract class Graph {
     @Override
     public String toString() {
         String s = "";
+        for(Node n : this.nodes)
+            s +=  "\n" + n.toString();
         return s;
     }
     
