@@ -36,6 +36,7 @@ public class DirectedGraph extends Graph{
                 System.out.println(e.getMessage());
             }
         }
+        else System.err.println("Nodes do not exist.");
     }
 
     

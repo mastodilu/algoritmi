@@ -16,6 +16,11 @@ public abstract class Graph {
      * Arraylist di nodi del grafo.
      */
     protected ArrayList<Node> nodes;
+    
+    
+    public Graph(){
+        this.nodes = new ArrayList<Node>();
+    }
 
     /**
      * Aggiunge il nodo al grafo.
