@@ -135,5 +135,15 @@ public class Node<T> {
     }
     
     
+    /**
+     * Restituisce la somma dei pesi dei collegamenti.
+     * @return 
+     */
+    public double weight(){
+        double total = 0;
+        for(Weight w : this.weights)
+            total += w.weight;
+        return total;
+    }
     
 }

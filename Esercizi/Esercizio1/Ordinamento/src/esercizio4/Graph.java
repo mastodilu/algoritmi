@@ -78,5 +78,14 @@ public abstract class Graph {
     }
     
     
+    /**
+     * Restituisce la somma dei pesi dei collegamenti tra i nodi del grafo.
+     */
+    public double weight(){
+        double total = 0;
+        for(Node n : this.nodes)
+            total += n.weight();
+        return total;
+    }
     
 }
