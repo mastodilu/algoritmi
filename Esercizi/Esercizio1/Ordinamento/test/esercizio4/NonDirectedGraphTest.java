@@ -113,4 +113,27 @@ public class NonDirectedGraphTest {
         System.out.println(instance.toString());
     }
     
+    
+    /**
+     * test weight method.
+     */
+    @Test
+    public void testWeight() throws Exception{
+        System.out.println("weight");
+        Node a = new Node("A");
+        Node b = new Node("B");
+        Node c = new Node("C");
+        Weight weight = new Weight(3d);
+        NonDirectedGraph instance = new NonDirectedGraph();
+        
+        instance.addNode(a);
+        instance.addNode(b);
+        instance.addNode(c);
+        
+        instance.addLink(a, b, weight);
+        instance.addLink(b, c, weight);
+        
+        assertEquals(12.0d, instance.weight(), 0.1d);
+    }
+    
 }
