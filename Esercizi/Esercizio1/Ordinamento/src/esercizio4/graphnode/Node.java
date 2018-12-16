@@ -27,6 +27,18 @@ public class Node<T> {
     private T content;
     
     /**
+     * Costruttore.
+     * @param content
+     * @throws NodeException 
+     */
+    public Node(T content) throws NodeException{
+        if(content == null) throw new NodeException("Content must be non null.");
+        this.content = content;
+        this.links = new ArrayList<Node>();
+        this.weights = new ArrayList<Weight>();
+    }
+    
+    /**
      * Costruttore parametrico.
      * @param content
      * @param links
