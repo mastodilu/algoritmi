@@ -19,5 +19,10 @@ public class Weight {
     public Double getWeight(){
         return this.weight;
     }
+
+    @Override
+    public String toString() {
+        return weight.toString();
+    }
     
 }
