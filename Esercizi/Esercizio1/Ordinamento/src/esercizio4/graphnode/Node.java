@@ -1,11 +1,6 @@
 /*
  * La classe Nodo per creare un grafo.
  * 
- * 
- * 
- * 
- * 
- * 
  */
 package esercizio4.graphnode;
 
@@ -115,4 +110,18 @@ public class Node<T> {
     public int grade(){
         return this.links.size();
     }
+    
+    @Override
+    public String toString() {
+        String s = "";
+        s += "Node: " + this.content.toString() + "\n";
+        for(int i = 0; i < this.links.size(); i++){
+            s += "->" + this.links.get(i).content.toString() + " : ";
+            s += this.weights.get(i).toString() + "\t";
+        }
+        return s;
+    }
+    
+    
+    
 }
