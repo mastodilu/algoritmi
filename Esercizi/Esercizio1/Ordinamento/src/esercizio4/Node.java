@@ -108,4 +108,11 @@ public class Node<T> {
         this.links.remove(index);
         this.weights.remove(index);
     }
+    
+    /**
+     * Restituisce il numero di collegamenti uscenti del nodo.
+     */
+    public int grade(){
+        return this.links.size();
+    }
 }
