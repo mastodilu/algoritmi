@@ -11,8 +11,8 @@ package esercizio4;
 public class Weight {
     protected Double weight;
     
-    public Weight(Double d) throws NonPositiveException{
-        if(d < 1)   throw new NonPositiveException("Weight value must be greater than 1");
+    public Weight(Double d) throws WeightException{
+        if(d < 1)   throw new WeightException("Weight value must be greater than 1");
         this.weight = d;
     }
     

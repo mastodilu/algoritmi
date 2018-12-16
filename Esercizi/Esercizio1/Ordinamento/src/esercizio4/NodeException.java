@@ -9,12 +9,8 @@ package esercizio4;
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
-public class NonPositiveException extends Exception{
-    public NonPositiveException(){
-        super();
-    }
-    
-    public NonPositiveException(String msg){
+public class NodeException extends Exception{
+    public NodeException(String msg){
         super(msg);
     }
 }

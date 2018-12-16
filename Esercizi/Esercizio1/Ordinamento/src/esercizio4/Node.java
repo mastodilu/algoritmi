@@ -50,6 +50,7 @@ public class Node<T> {
      * @param weight 
      */
     public Node(T content,Node link,Weight weight){
+        
         this.links = new ArrayList<Node>();
         this.links.add(link);
         this.weights = new ArrayList<Weight>();
