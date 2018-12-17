@@ -11,6 +11,7 @@ import esercizio1.algoritmi.MergeSort;
 import esercizio1.algoritmi.SumsFinder;
 import esercizio2.stringdistance.LennonWords;
 import esercizio4.BuildItalianGraph;
+import esercizio4.Prim;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -48,7 +49,7 @@ public class MainClass {
         
         //start1();
         //start2();
-//        start3();
+        //start3();
         start4();
 
         
@@ -77,7 +78,12 @@ public class MainClass {
     
     private static void start4(){
         BuildItalianGraph big = new BuildItalianGraph();
-        big.toString();
+        System.out.println(big.toString());
+        Prim prim = new Prim (big.getGraph());
+        prim.startPrim();
+        System.out.println("Nodes:  " + prim.getVisitedNodes().size());
+        System.out.println("Edges:  " + prim.getVisitedNodes().size());
+        System.out.println("Weight: " + prim.weight());
     }
     
     
