@@ -37,7 +37,7 @@ public class NonDirectedGraphTest {
         System.out.println("addLink");
         
         NonDirectedGraph instance = new NonDirectedGraph();
-        Weight weight = new Weight(3);
+        Weight weight = new Weight(3d);
         instance.addNode("A");
         instance.addNode("B");
         Edge e = new Edge("A", "B", weight);
@@ -92,7 +92,7 @@ public class NonDirectedGraphTest {
         String a = "A";
         String b = "B";
         String c = "C";
-        Weight weight = new Weight(3);
+        Weight weight = new Weight(3d);
         NonDirectedGraph instance = new NonDirectedGraph();
         
         instance.addNode(a);
@@ -121,11 +121,11 @@ public class NonDirectedGraphTest {
         instance.addNode(b);
         instance.addNode(c);
         
-        instance.addEdge(a, b, new Weight(2));
-        instance.addEdge(b, a, new Weight(3));
-        instance.addEdge(b, c, new Weight(4));
+        instance.addEdge(a, b, new Weight(2d));
+        instance.addEdge(b, a, new Weight(3d));
+        instance.addEdge(b, c, new Weight(4d));
         
-        Integer expected = 18;
+        Double expected = 18d;
         
         assertEquals(expected, instance.weight());
     }
