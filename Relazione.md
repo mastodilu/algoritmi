@@ -84,6 +84,8 @@ Anche in questo caso la complessita' e' la seguente
 
 $$T(n)\in\Theta(n \log n)$$
 
+<div class="pagebreak"></div>
+
 ## Algoritmi a confronto
 
 <div class="center-image">
@@ -98,7 +100,7 @@ $$T(n)\in\Theta(n \log n)$$
 
 </div>
 
-Consideriamo i due algoritmi Insertion Sort iterativo e Merge sort.<rb>
+Consideriamo i due algoritmi Insertion Sort iterativo e Merge sort.<br>
 Dall'immagine e' facile capire come il quadrato rispetto al numero di elementi faccia crescere velocemente Insertion Sort rispetto a Merge Sort. All'aumentare dell'input il tempo di esecuzione aumenta in modo esponenziale.<br>
 E' proprio questo che mi ha spinto a provare un approccio a partizione bilanciate per entrambi gli algoritmi.
 
@@ -111,6 +113,8 @@ La seconda parte dell'esercizio chiedeva di leggere i 100 interi contenuti nel f
 ## SumsFinder
 
 Per realizzare questo esercizio ho deciso di realizzare una classe di supporto: `Sum` e di usare la struttura `HashTable` disponibile in `Java`.
+
+<div class="pagebreak"></div>
 
 #### La classe Sum
 
