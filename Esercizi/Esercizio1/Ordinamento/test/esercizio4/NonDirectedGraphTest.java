@@ -5,7 +5,7 @@
  */
 package esercizio4;
 
-import esercizio4.graphnode.Node;
+import esercizio4.graphnode.Edge;
 import esercizio4.graphnode.Weight;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -36,18 +36,14 @@ public class NonDirectedGraphTest {
     public void testAddLink() throws Exception {
         System.out.println("addLink");
         
-        Node from = new Node("A");
-        Node to = new Node("B");
-        Weight weight = new Weight(3);
         NonDirectedGraph instance = new NonDirectedGraph();
+        Weight weight = new Weight(3);
+        instance.addNode("A");
+        instance.addNode("B");
+        Edge e = new Edge("A", "B", weight);
         
-        instance.addNode(from);
-        instance.addNode(to);
-        
-        instance.addLink(from, to, weight);
-        instance.addLink(to, from, weight);
-        
-        System.out.println("grado " + instance.grade());
+        instance.addEdge("A", "B", weight);
+        instance.addEdge("B", "B", weight);
         
         assertEquals(instance.grade(), 4);
     }
@@ -59,23 +55,19 @@ public class NonDirectedGraphTest {
     public void testRemoveLink() throws Exception {
         System.out.println("removeLink");
         
-        Node from = new Node("A");
-        Node to = new Node("B");
-        Weight weight = new Weight(3);
         NonDirectedGraph instance = new NonDirectedGraph();
+        Weight weight = new Weight(3);
+        instance.addNode("A");
+        instance.addNode("B");
+        instance.addNode("C");
         
-        instance.addNode(from);
-        instance.addNode(to);
-        
-        instance.addLink(from, to, weight);
-        instance.addLink(to, from, weight);
+        instance.addEdge("A", "B", weight);
+        instance.addEdge("B", "C", weight);
         
         assertEquals(instance.grade(), 4);
-        
-        instance.removeLink(from, to);
+        instance.removeEdge("B","A");
         assertEquals(instance.grade(), 2);
-        
-        instance.removeLink(to, from);
+        instance.removeEdge("B","C");
         assertEquals(instance.grade(), 0);
     }
 
@@ -97,10 +89,9 @@ public class NonDirectedGraphTest {
      */
     @Test
     public void testToString() throws Exception{
-        System.out.println("toString");
-        Node a = new Node("A");
-        Node b = new Node("B");
-        Node c = new Node("C");
+        String a = "A";
+        String b = "B";
+        String c = "C";
         Weight weight = new Weight(3);
         NonDirectedGraph instance = new NonDirectedGraph();
         
@@ -108,8 +99,9 @@ public class NonDirectedGraphTest {
         instance.addNode(b);
         instance.addNode(c);
         
-        instance.addLink(a, b, weight);
-        instance.addLink(b, c, weight);
+        instance.addEdge(a, b, weight);
+        instance.addEdge(b, a, weight);
+        instance.addEdge(b, c, weight);
         System.out.println(instance.toString());
     }
     
@@ -120,20 +112,22 @@ public class NonDirectedGraphTest {
     @Test
     public void testWeight() throws Exception{
         System.out.println("weight");
-        Node a = new Node("A");
-        Node b = new Node("B");
-        Node c = new Node("C");
-        Weight weight = new Weight(3);
+        String a = "A";
+        String b = "B";
+        String c = "C";
         NonDirectedGraph instance = new NonDirectedGraph();
         
         instance.addNode(a);
         instance.addNode(b);
         instance.addNode(c);
         
-        instance.addLink(a, b, weight);
-        instance.addLink(b, c, weight);
+        instance.addEdge(a, b, new Weight(2));
+        instance.addEdge(b, a, new Weight(3));
+        instance.addEdge(b, c, new Weight(4));
         
-        assertEquals((Integer)12, instance.weight());
+        Integer expected = 18;
+        
+        assertEquals(expected, instance.weight());
     }
     
 }
