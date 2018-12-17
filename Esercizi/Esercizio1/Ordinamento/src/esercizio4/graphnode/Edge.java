@@ -9,7 +9,7 @@ package esercizio4.graphnode;
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
-public class Edge<T extends Comparable<T>> {
+public class Edge<T extends Comparable<T>> implements Comparable<Edge>{
     private T from;
     private T to;
     private Weight weight;
@@ -36,6 +36,12 @@ public class Edge<T extends Comparable<T>> {
         return from.toString() + ""
                 + " -> " + to.toString() + ""
                 + " : " + weight.toString();
+    }
+    
+    
+    @Override
+    public int compareTo(Edge o) {
+        return this.weight.compareTo(o.weight);
     }
     
     

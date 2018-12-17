@@ -8,7 +8,7 @@ package esercizio4.graphnode;
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
-public class Weight {
+public class Weight implements Comparable<Weight>{
     protected Integer weight;
     
     public Weight(Integer d) throws WeightException{
@@ -23,6 +23,11 @@ public class Weight {
     @Override
     public String toString() {
         return weight.toString();
+    }
+
+    @Override
+    public int compareTo(Weight o) {
+        return weight.compareTo(o.weight);
     }
     
 }
