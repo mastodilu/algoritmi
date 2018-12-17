@@ -87,8 +87,12 @@ public class DirectedGraph<T extends Comparable<T>>{
     }
 
     
+    @Override
     public String toString() {
-        String s = "";
+        String s = "Nodes:\n";
+        for(T t : this.nodes){
+            t += t.toString() + "\n";
+        }
         for(Edge e : this.edges)
             s +=  e.toString() + "\n";
         return s;

@@ -73,7 +73,6 @@ public class Prim<T extends Comparable<T>> {
             // true se ci sono archi da visitare; false se e' terminata la componente connessa.
             //  --> se ci sono altri nodi non esplorati allora ci sono altre componenti connesse
                 T nextNode = (T)this.visitedEdges.get(this.visitedEdges.size()-1).getTo();
-                System.out.println("nextNode " + nextNode);
                 exploreEdges(nextNode); // esplora gli archi
             }
         }
@@ -119,9 +118,23 @@ public class Prim<T extends Comparable<T>> {
                 try{
                     HeapElement hpel = new HeapElement(e, e.getWeight().getWeight());
                     minh.heapInsert(hpel);
-                    System.out.println("Aggiunto in minh " + e.toString());
                 }catch(NullContentException ex){ System.err.println(ex.getMessage());}
             }
         }
+    }
+    
+    
+    
+    
+    @Override
+    public String toString(){
+        String s = "Nodes:\n";
+        for(T t : this.visitedNodes.keySet())
+            s += t.toString() + "\n";
+        s += "Edges:\n";
+        for(Edge e : this.visitedEdges){
+            s += e.toString() + "\n";
+        }
+        return s;
     }
 }
