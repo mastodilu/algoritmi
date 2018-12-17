@@ -37,7 +37,7 @@ public class DirectedGraphTest {
         System.out.println("addLink");
         
         DirectedGraph instance = new DirectedGraph();
-        Weight weight = new Weight(3);
+        Weight weight = new Weight(3d);
         instance.addNode("A");
         instance.addNode("B");
         Edge e = new Edge("A", "B", weight);
@@ -56,7 +56,7 @@ public class DirectedGraphTest {
         System.out.println("removeLink");
         
         DirectedGraph instance = new DirectedGraph();
-        Weight weight = new Weight(3);
+        Weight weight = new Weight(3d);
         instance.addNode("A");
         instance.addNode("B");
         
@@ -92,7 +92,7 @@ public class DirectedGraphTest {
         String a = "A";
         String b = "B";
         String c = "C";
-        Weight weight = new Weight(3);
+        Weight weight = new Weight(3d);
         DirectedGraph instance = new DirectedGraph();
         
         instance.addNode(a);
@@ -123,11 +123,11 @@ public class DirectedGraphTest {
         instance.addNode(b);
         instance.addNode(c);
         
-        instance.addEdge(a, b, new Weight(2));
-        instance.addEdge(b, a, new Weight(3));
-        instance.addEdge(b, c, new Weight(4));
+        instance.addEdge(a, b, new Weight(2d));
+        instance.addEdge(b, a, new Weight(3d));
+        instance.addEdge(b, c, new Weight(4d));
         
-        Integer expected = 9;
+        Double expected = 9d;
         
         assertEquals(expected, instance.weight());
     }
