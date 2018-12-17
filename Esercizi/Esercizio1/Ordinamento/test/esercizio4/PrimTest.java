@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
-public class PrimTest {
+public class PrimTest<T> {
     
     public PrimTest() {
     }
@@ -33,7 +33,7 @@ public class PrimTest {
 
 
     /**
-     * Test of startPrim method, of class Prim.
+     * Test prim su grafo non orientato.
      */
     @Test
     public void testStartPrim() {
@@ -69,7 +69,7 @@ public class PrimTest {
             //chiamo prim
             Prim prim = new Prim(graph);
             ArrayList<Edge> result = prim.startPrim();
-            printEdges(result);
+            printResult(graph.nodes, result);
             
             int totalweight = totalWeight(result);
             int expected = 15;
@@ -80,6 +80,9 @@ public class PrimTest {
     }
     
     
+    /**
+     * test Prim su grafo non orientato, foresta di alberi
+     */
     @Test
     public void testPrim(){
         System.out.println("prim");
@@ -109,7 +112,7 @@ public class PrimTest {
             //chiamo prim
             Prim prim = new Prim(graph);
             ArrayList<Edge> result = prim.startPrim();
-            printEdges(result);
+            printResult(graph.nodes,result);
             
             int totalweight = totalWeight(result);
             int expected = 10;
@@ -121,6 +124,9 @@ public class PrimTest {
     
     
     
+    /**
+     * Test prim grafo orientato.
+     */
     @Test
     public void testDirectedPrim(){
         System.out.println("startPrim directed");
@@ -155,7 +161,7 @@ public class PrimTest {
             //chiamo prim
             Prim prim = new Prim(graph);
             ArrayList<Edge> result = prim.startPrim();
-            printEdges(result);
+            printResult(graph.nodes,result);
             
             int totalweight = totalWeight(result);
             int expected = 18;
@@ -166,6 +172,9 @@ public class PrimTest {
     }
     
     
+    /**
+     * Calcola il peso totale dell'arraylist di Edge.
+     */
     private int totalWeight(ArrayList<Edge> a){
         int total = 0;
         for(Edge e : a){
@@ -175,8 +184,16 @@ public class PrimTest {
     }
     
     
-    private void printEdges(ArrayList<Edge> a){
-        String s = "";
+    /**
+     * Stampa l'arraylist di Edge.
+     * @param a 
+     */
+    private void printResult(ArrayList<T> nodes, ArrayList<Edge> a){
+        String s = "Nodes:";
+        for(T t : nodes){
+            s += "     " + t.toString();
+        }
+        s += "\n";
         for(Edge e : a){
             s += e.toString()+"\n";
         }
