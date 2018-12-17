@@ -9,8 +9,14 @@ package esercizio4.graphnode;
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
-public class NodeException extends Exception{
-    public NodeException(String msg){
-        super(msg);
+public class Edge<T extends Comparable<T>> {
+    T from;
+    T to;
+    Weight weight;
+    
+    public Edge(T from, T to, Weight weight){
+        this.from = from;
+        this.to = to;
+        this.weight = weight;
     }
 }
