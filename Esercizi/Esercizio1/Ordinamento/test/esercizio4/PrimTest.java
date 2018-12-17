@@ -71,9 +71,9 @@ public class PrimTest<T> {
             ArrayList<Edge> result = prim.startPrim();
             printResult(graph.nodes, result);
             
-            int totalweight = totalWeight(result);
-            int expected = 15;
-            assertEquals(totalweight, expected);
+            Double totalWeight = prim.weight();
+            Double expected = 15d;
+            assertEquals(totalWeight, expected);
         }catch(WeightException ex){ System.err.println(ex.getMessage());
         }catch(GraphException ex){ System.err.println(ex.getMessage());
         }
@@ -114,9 +114,9 @@ public class PrimTest<T> {
             ArrayList<Edge> result = prim.startPrim();
             printResult(graph.nodes,result);
             
-            int totalweight = totalWeight(result);
-            int expected = 10;
-            assertEquals(totalweight, expected);
+            Double totalWeight = prim.weight();
+            Double expected = 10d;
+            assertEquals(totalWeight, expected);
         }catch(WeightException ex){ System.err.println(ex.getMessage());
         }catch(GraphException ex){ System.err.println(ex.getMessage());
         }
@@ -163,24 +163,12 @@ public class PrimTest<T> {
             ArrayList<Edge> result = prim.startPrim();
             printResult(graph.nodes,result);
             
-            int totalweight = totalWeight(result);
-            int expected = 18;
-            assertEquals(totalweight, expected);
+            Double totalWeight = prim.weight();
+            Double expected = 18d;
+            assertEquals(totalWeight, expected);
         }catch(WeightException ex){ System.err.println(ex.getMessage());
         }catch(GraphException ex){ System.err.println(ex.getMessage());
         }
-    }
-    
-    
-    /**
-     * Calcola il peso totale dell'arraylist di Edge.
-     */
-    private int totalWeight(ArrayList<Edge> a){
-        int total = 0;
-        for(Edge e : a){
-            total += e.getWeight().getWeight();
-        }
-        return total;
     }
     
     
@@ -239,9 +227,56 @@ public class PrimTest<T> {
             Prim prim = new Prim(graph);
             ArrayList<Edge> result = prim.startPrim();
             
-            int totalweight = totalWeight(result);
-            int expected = 18;
-            assertEquals(totalweight, expected);
+            Double totalWeight = prim.weight();
+            Double expected = 18d;
+            assertEquals(totalWeight, expected);
+            
+            System.out.println(prim.toString());
+        }catch(WeightException ex){ System.err.println(ex.getMessage());
+        }catch(GraphException ex){ System.err.println(ex.getMessage());
+        }
+    }
+    
+    
+    
+    @Test
+    public void testWeight(){
+        System.out.println("test weight");
+        //creo nodi e archi
+        String a="A",b="B",c="C",d="D",e="E",f="F";
+        Weight w2, w3, w5;
+        Edge[] edges = new Edge[8];
+        try{
+            w2 = new Weight(2);
+            w3 = new Weight(3);
+            w5 = new Weight(5);
+            edges[0] = new Edge(a,b,w3);
+            edges[1] = new Edge(b,c,w5);
+            edges[2] = new Edge(a,d,w5);
+            edges[3] = new Edge(c,d,w2);
+            edges[4] = new Edge(c,f,w3);
+            edges[5] = new Edge(d,f,w2);
+            edges[6] = new Edge(d,e,w3);
+            edges[7] = new Edge(e,f,w5);
+            //creo un grafo
+            DirectedGraph graph = new DirectedGraph();
+            //popolo un grafo
+            graph.addNode(a);
+            graph.addNode(b);
+            graph.addNode(c);
+            graph.addNode(d);
+            graph.addNode(e);
+            graph.addNode(f);
+            for(Edge edge : edges)
+                graph.addEdge(edge.getFrom(), edge.getTo(), edge.getWeight());
+            
+            //chiamo prim
+            Prim prim = new Prim(graph);
+            ArrayList<Edge> result = prim.startPrim();
+            
+            Double totalWeight = prim.weight();
+            Double expected = 18d;
+            assertEquals(totalWeight, expected);
             System.out.println(prim.toString());
         }catch(WeightException ex){ System.err.println(ex.getMessage());
         }catch(GraphException ex){ System.err.println(ex.getMessage());

@@ -80,6 +80,12 @@ public class Prim<T extends Comparable<T>> {
     }
     
     
+    
+    public HashMap<T, Integer> getVisitedNodes(){
+        return this.visitedNodes;
+    }
+    
+    
     /**
      * Estrae il nodo minimo che punta a nodi inesplorati se questo non causa cicli.
      * Il nuovo nodo trovato viene salvato in visitedNodes e 
@@ -121,6 +127,18 @@ public class Prim<T extends Comparable<T>> {
                 }catch(NullContentException ex){ System.err.println(ex.getMessage());}
             }
         }
+    }
+    
+    
+    /**
+     * Restituisce la somma dei pesi (distanze in Km) degli archi.
+     */
+    public Double weight(){
+        Double d = 0d;
+        for(Edge e : this.visitedEdges){
+            d += e.getWeight().getWeight();
+        }
+        return d;
     }
     
     
