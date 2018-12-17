@@ -10,6 +10,7 @@ import esercizio1.algoritmi.InsertionSort;
 import esercizio1.algoritmi.MergeSort;
 import esercizio1.algoritmi.SumsFinder;
 import esercizio2.stringdistance.LennonWords;
+import esercizio4.BuildItalianGraph;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -26,6 +27,7 @@ public class MainClass {
      */
     private static final String PATH = "C:\\Users\\masto\\Documents\\MieiProgetti\\Algoritmi_file_enormi\\Esercizio1\\integers.csv";
     private static final String PATH_SUMS = "C:\\Users\\masto\\Documents\\MieiProgetti\\Algoritmi_file_enormi\\Esercizio1\\sums.txt";
+    private static final String PATH_DIST = "C:\\Users\\masto\\Documents\\MieiProgetti\\Algoritmi_file_enormi\\Esercizio4\\italian_dist_graph.csv";
     static BufferedReader br;
     static FileReader fr;
     
@@ -47,7 +49,7 @@ public class MainClass {
         //start1();
         //start2();
 //        start3();
-//        start4();
+        start4();
 
         
     }
@@ -72,7 +74,12 @@ public class MainClass {
     }
     
     private static void start3(){}
-    private static void start4(){}
+    
+    private static void start4(){
+        BuildItalianGraph big = new BuildItalianGraph();
+        big.toString();
+    }
+    
     
     /**
      * stampa ogni numero contenuto nell'array
