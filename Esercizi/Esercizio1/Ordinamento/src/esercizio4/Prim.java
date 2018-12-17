@@ -38,18 +38,17 @@ public class Prim<T extends Comparable<T>> {
     }
     
     private void initPrim(ArrayList<Edge> edges, ArrayList<T> nodes){
-        edges = new ArrayList<Edge>();
-        nodes = new ArrayList<T>();
+        this.edges = new ArrayList<Edge>();
+        this.nodes = new ArrayList<T>();
         visitedEdges = new ArrayList<Edge>();
         visitedNodes = new HashMap<T, Integer>();
         minh = new MinHeap();
-        
         copyArrayListEdges(edges);
         copyArrayListNodes(nodes);
     }
     
     
-    public ArrayList<Edge> getResult(){
+    public synchronized ArrayList<Edge> getResult(){
         return this.visitedEdges;
     }
     
@@ -66,10 +65,9 @@ public class Prim<T extends Comparable<T>> {
         }
     }
     
-    public ArrayList<Edge> startPrim(){
+    public synchronized ArrayList<Edge> startPrim(){
         for(T t : this.nodes){                     // per ogni nodo del grafo
             if(!this.visitedNodes.containsKey(t)){ // non ancora visitato
-                this.visitedNodes.put(t,1);        // aggiungilo ai visitati
                 exploreEdges(t);                  // esplora i suoi archi
             }
             
@@ -77,6 +75,7 @@ public class Prim<T extends Comparable<T>> {
             // true se ci sono archi da visitare; false se e' terminata la componente connessa.
             //  --> se ci sono altri nodi non esplorati allora ci sono altre componenti connesse
                 T nextNode = (T)this.visitedEdges.get(this.visitedEdges.size()-1).getTo();
+                System.out.println("nextNode " + nextNode);
                 exploreEdges(nextNode); // esplora gli archi
             }
         }
@@ -85,7 +84,7 @@ public class Prim<T extends Comparable<T>> {
     
     
     /**
-     * Estrae il nodo minimo che punta a nodi inesplorati.
+     * Estrae il nodo minimo che punta a nodi inesplorati se questo non causa cicli.
      * Il nuovo nodo trovato viene salvato in visitedNodes e 
      * l'arco usato per raggiungere il nuovo nodo viene salvato in visitedEdges
      * @return true se trova un nuovo arco, false altrimenti. Se restituisce false
@@ -93,35 +92,36 @@ public class Prim<T extends Comparable<T>> {
      */
     private boolean findNextEdge(){
         boolean stop = false;
-        while(minh.size() > 0 && !stop){ //controlla se puo' estrarre dallo heap
+        while(minh.size() > 0 && !stop){
             try{
                 Edge e = (Edge)minh.heapExtract().getContent(); //estrae il primo arco
                 //se il nodo raggiunto con questo arco non e' contenuto nei nodi visitati
-                if(!this.visitedNodes.containsKey(e.getTo())){
+                if(!this.visitedNodes.containsKey(e.getTo())){//evita cicli
                     this.visitedNodes.put((T)e.getTo(), 1);// aggiungi a visited
                     this.visitedEdges.add(e);// salva l'arco
-                    stop = false;
+                    stop = true;
                 }
             }catch(IndexOutOfHeapException e){
                 System.err.println(e.getMessage());
             }
-            
         }
         return stop;
     }
     
     
     /**
-     * Inserisce nel minheap ogni arco che non punta a nodi gia' visitati.
+     * Inserisce nel minheap ogni arco uscente dal nodo passato come parametro.
      * Gli archi uscenti da 't' hanno il valore 'from' che corrisponde a 't'.
      * @param t Il nodo di partenza.
      */
     private void exploreEdges(T t){
+        this.visitedNodes.put(t,1); // aggiunge il nodo ai nodi visitati
         for(Edge e : this.edges){
             if(e.getFrom().compareTo(t) == 0){ //prende gli archi uscenti dal nodo indicato
                 try{
-                    HeapElement hpel = new HeapElement(e, e.getWeight());
+                    HeapElement hpel = new HeapElement(e, e.getWeight().getWeight());
                     minh.heapInsert(hpel);
+                    System.out.println("Aggiunto in minh " + e.toString());
                 }catch(NullContentException ex){ System.err.println(ex.getMessage());}
             }
         }

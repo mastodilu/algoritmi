@@ -77,7 +77,7 @@ public class DirectedGraph<T extends Comparable<T>>{
     public Integer weight(){
         Integer total = 0;
         for(Edge e : this.edges)
-            total += e.getWeight();
+            total += e.getWeight().getWeight();
         return total;
     }
     

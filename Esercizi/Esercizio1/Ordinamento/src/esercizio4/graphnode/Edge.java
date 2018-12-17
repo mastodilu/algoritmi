@@ -28,10 +28,11 @@ public class Edge<T extends Comparable<T>> implements Comparable<Edge>{
         return to;
     }
 
-    public int getWeight() {
-        return weight.getWeight();
+    public Weight getWeight() {
+        return weight;
     }
     
+    @Override
     public String toString(){
         return from.toString() + ""
                 + " -> " + to.toString() + ""
