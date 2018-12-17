@@ -13,9 +13,9 @@ import esercizio3.heapelementexceptions.NullContentException;
  */
 public class HeapElement<T extends Comparable> {
     private T content;
-    private int priority;
+    private Double priority;
     
-    public HeapElement(T content, int priority) throws NullContentException{
+    public HeapElement(T content, Double priority) throws NullContentException{
         if(content == null)   throw new NullContentException();
         this.content = content;
         this.priority = priority;
@@ -24,14 +24,14 @@ public class HeapElement<T extends Comparable> {
     public HeapElement(T content) throws NullContentException{
         if(content == null)   throw new NullContentException();
         this.content = content;
-        this.priority = 0;
+        this.priority = 0d;
     }
     
     /**
      * Aggiorna il valore priorita' dell'istanza corrente.
      * @param priority 
      */
-    protected void updatePriority(int priority){
+    protected void updatePriority(Double priority){
         this.priority = priority;
     }
     
@@ -39,7 +39,7 @@ public class HeapElement<T extends Comparable> {
         return this.content;
     }
     
-    public int getPriority(){
+    public Double getPriority(){
         return this.priority;
     }
     
@@ -50,7 +50,7 @@ public class HeapElement<T extends Comparable> {
      */
     public boolean isEqualTo(HeapElement other){
         return (this.content.compareTo(other.content) == 0)
-                && this.priority == other.priority;
+                && java.lang.Double.compare(this.priority,other.priority) == 0;
     }
     
     

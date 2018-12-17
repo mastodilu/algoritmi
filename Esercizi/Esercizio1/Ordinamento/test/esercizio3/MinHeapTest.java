@@ -113,19 +113,19 @@ public class MinHeapTest {
         MinHeap minh = new MinHeap();
         ArrayList<HeapElement> expected = new ArrayList<HeapElement>();
         try{
-            minh.heapInsert(new HeapElement("miao", 0));
-            minh.heapInsert(new HeapElement("miao", 2));
-            minh.heapInsert(new HeapElement("ciao",1));
-            minh.heapInsert(new HeapElement("ciao", 3));
-            minh.heapInsert(new HeapElement("CASTORO",0));
-            minh.heapInsert(new HeapElement("asdasd", 0));
+            minh.heapInsert(new HeapElement("miao", 0d));
+            minh.heapInsert(new HeapElement("miao", 2d));
+            minh.heapInsert(new HeapElement("ciao",1d));
+            minh.heapInsert(new HeapElement("ciao", 3d));
+            minh.heapInsert(new HeapElement("CASTORO",0d));
+            minh.heapInsert(new HeapElement("asdasd", 0d));
 
-            expected.add(new HeapElement("CASTORO",0));
-            expected.add(new HeapElement("miao",0));
-            expected.add(new HeapElement("asdasd",0));
-            expected.add(new HeapElement("ciao",3));
-            expected.add(new HeapElement("miao",2));
-            expected.add(new HeapElement("ciao",1));
+            expected.add(new HeapElement("CASTORO",0d));
+            expected.add(new HeapElement("miao",0d));
+            expected.add(new HeapElement("asdasd",0d));
+            expected.add(new HeapElement("ciao",3d));
+            expected.add(new HeapElement("miao",2d));
+            expected.add(new HeapElement("ciao",1d));
             
             compareArrayList(minh.getElements(), expected);
         }catch(NullContentException e){

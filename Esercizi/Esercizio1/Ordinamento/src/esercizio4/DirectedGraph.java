@@ -74,8 +74,8 @@ public class DirectedGraph<T extends Comparable<T>>{
     /**
      * Restituisce la somma dei pesi dei collegamenti tra i nodi del grafo.
      */
-    public Integer weight(){
-        Integer total = 0;
+    public Double weight(){
+        Double total = 0d;
         for(Edge e : this.edges)
             total += e.getWeight().getWeight();
         return total;

@@ -10,8 +10,6 @@ import esercizio3.MinHeap;
 import esercizio3.heapelementexceptions.NullContentException;
 import esercizio3.heapexceptions.IndexOutOfHeapException;
 import esercizio4.graphnode.Edge;
-import esercizio4.graphnode.Weight;
-import esercizio4.graphnode.WeightException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
