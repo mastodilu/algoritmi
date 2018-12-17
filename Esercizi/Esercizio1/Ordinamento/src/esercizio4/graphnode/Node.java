@@ -10,7 +10,8 @@ import java.util.ArrayList;
  *
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
-public class Node<T> {
+public class Node<T extends Comparable<T>>
+        implements Comparable<Node<T>> {
     /**
      * Elenco di nodi a cui e' collegato questo nodo.
      */
@@ -67,7 +68,7 @@ public class Node<T> {
     }
     
     public ArrayList<Node> getLinks(){
-        return this.links;
+        return links;
     }
     
     public ArrayList<Weight> getWeights(){
@@ -139,11 +140,17 @@ public class Node<T> {
      * Restituisce la somma dei pesi dei collegamenti.
      * @return 
      */
-    public double weight(){
-        double total = 0;
+    public Integer weight(){
+        Integer total = 0;
         for(Weight w : this.weights)
             total += w.weight;
         return total;
     }
+
+    @Override
+    public int compareTo(Node<T> n) {
+        return getContent().compareTo(n.getContent());
+    }
+
     
 }

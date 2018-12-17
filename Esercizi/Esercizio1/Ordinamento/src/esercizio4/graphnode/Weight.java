@@ -9,14 +9,14 @@ package esercizio4.graphnode;
  * @author Matteo Di Lucchio <matteo.dilucchio@edu.unito.it>
  */
 public class Weight {
-    protected Double weight;
+    protected Integer weight;
     
-    public Weight(Double d) throws WeightException{
+    public Weight(Integer d) throws WeightException{
         if(d < 1)   throw new WeightException("Weight value must be greater than 1");
         this.weight = d;
     }
     
-    public Double getWeight(){
+    public Integer getWeight(){
         return this.weight;
     }
 

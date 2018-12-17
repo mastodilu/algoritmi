@@ -38,7 +38,7 @@ public class DirectedGraphTest {
         
         Node from = new Node("A");
         Node to = new Node("B");
-        Weight weight = new Weight(3d);
+        Weight weight = new Weight(3);
         DirectedGraph instance = new DirectedGraph();
         
         instance.addNode(from);
@@ -61,7 +61,7 @@ public class DirectedGraphTest {
         
         Node from = new Node("A");
         Node to = new Node("B");
-        Weight weight = new Weight(3d);
+        Weight weight = new Weight(3);
         DirectedGraph instance = new DirectedGraph();
         
         instance.addNode(from);
@@ -101,7 +101,7 @@ public class DirectedGraphTest {
         Node a = new Node("A");
         Node b = new Node("B");
         Node c = new Node("C");
-        Weight weight = new Weight(3d);
+        Weight weight = new Weight(3);
         DirectedGraph instance = new DirectedGraph();
         
         instance.addNode(a);
@@ -126,7 +126,7 @@ public class DirectedGraphTest {
         Node a = new Node("A");
         Node b = new Node("B");
         Node c = new Node("C");
-        Weight weight = new Weight(3d);
+        Weight weight = new Weight(3);
         DirectedGraph instance = new DirectedGraph();
         
         instance.addNode(a);

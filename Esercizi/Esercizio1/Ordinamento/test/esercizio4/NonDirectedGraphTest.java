@@ -38,7 +38,7 @@ public class NonDirectedGraphTest {
         
         Node from = new Node("A");
         Node to = new Node("B");
-        Weight weight = new Weight(3d);
+        Weight weight = new Weight(3);
         NonDirectedGraph instance = new NonDirectedGraph();
         
         instance.addNode(from);
@@ -61,7 +61,7 @@ public class NonDirectedGraphTest {
         
         Node from = new Node("A");
         Node to = new Node("B");
-        Weight weight = new Weight(3d);
+        Weight weight = new Weight(3);
         NonDirectedGraph instance = new NonDirectedGraph();
         
         instance.addNode(from);
@@ -101,7 +101,7 @@ public class NonDirectedGraphTest {
         Node a = new Node("A");
         Node b = new Node("B");
         Node c = new Node("C");
-        Weight weight = new Weight(3d);
+        Weight weight = new Weight(3);
         NonDirectedGraph instance = new NonDirectedGraph();
         
         instance.addNode(a);
@@ -123,7 +123,7 @@ public class NonDirectedGraphTest {
         Node a = new Node("A");
         Node b = new Node("B");
         Node c = new Node("C");
-        Weight weight = new Weight(3d);
+        Weight weight = new Weight(3);
         NonDirectedGraph instance = new NonDirectedGraph();
         
         instance.addNode(a);
@@ -133,7 +133,7 @@ public class NonDirectedGraphTest {
         instance.addLink(a, b, weight);
         instance.addLink(b, c, weight);
         
-        assertEquals(12.0d, instance.weight(), 0.1d);
+        assertEquals((Integer)12, instance.weight());
     }
     
 }
