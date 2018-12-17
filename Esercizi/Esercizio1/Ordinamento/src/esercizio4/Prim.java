@@ -64,6 +64,7 @@ public class Prim<T extends Comparable<T>> {
     }
     
     public synchronized ArrayList<Edge> startPrim(){
+        System.out.println("Computing Prim...");
         for(T t : this.nodes){                     // per ogni nodo del grafo
             if(!this.visitedNodes.containsKey(t)){ // non ancora visitato
                 exploreEdges(t);                  // esplora i suoi archi

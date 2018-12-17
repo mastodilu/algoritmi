@@ -78,7 +78,6 @@ public class MainClass {
     
     private static void start4(){
         BuildItalianGraph big = new BuildItalianGraph();
-        System.out.println(big.toString());
         Prim prim = new Prim (big.getGraph());
         prim.startPrim();
         System.out.println("Nodes:  " + prim.getVisitedNodes().size());
