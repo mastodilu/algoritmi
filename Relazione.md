@@ -84,6 +84,8 @@ Anche in questo caso la complessita' e' la seguente
 
 $$T(n)\in\Theta(n \log n)$$
 
+<div class="pagebreak"></div>
+
 ## Algoritmi a confronto
 
 <div class="center-image">
@@ -98,7 +100,7 @@ $$T(n)\in\Theta(n \log n)$$
 
 </div>
 
-Consideriamo i due algoritmi Insertion Sort iterativo e Merge sort.<rb>
+Consideriamo i due algoritmi Insertion Sort iterativo e Merge sort.<br>
 Dall'immagine e' facile capire come il quadrato rispetto al numero di elementi faccia crescere velocemente Insertion Sort rispetto a Merge Sort. All'aumentare dell'input il tempo di esecuzione aumenta in modo esponenziale.<br>
 E' proprio questo che mi ha spinto a provare un approccio a partizione bilanciate per entrambi gli algoritmi.
 
@@ -111,6 +113,8 @@ La seconda parte dell'esercizio chiedeva di leggere i 100 interi contenuti nel f
 ## SumsFinder
 
 Per realizzare questo esercizio ho deciso di realizzare una classe di supporto: `Sum` e di usare la struttura `HashTable` disponibile in `Java`.
+
+<div class="pagebreak"></div>
 
 #### La classe Sum
 
@@ -196,7 +200,7 @@ Questa versione calcola ricorsivamente il costo di edit tra due stringhe ma usa 
 
 Vengono utilizzare delle tabelle coi costi minimi dell'iterazione alla posizione `[i][j]`, una per ogni operazione (inserimento, cancellazione, passaggio al carattere successivo) grandi `m` x `n`, con `m` e `n` pari alla lunghezza delle due stringhe - 1.
 
-La posizione `[i][j]` rappresenta l'operazione effettuata quando `s1` e' lunga `i+1` e `s2` e' lunga `j+1`. Prima di eseguire la funzione viene controllato che il suo valore non sia gi� stato scritto in tabella: se esiste viene letto,altrimenti viene calcolato e successivamente salvato.
+La posizione `[i][j]` rappresenta l'operazione effettuata quando `s1` e' lunga `i+1` e `s2` e' lunga `j+1`. Prima di eseguire la funzione viene controllato che il suo valore non sia gia' stato scritto in tabella: se esiste viene letto,altrimenti viene calcolato e successivamente salvato.
 
 # Esercizio 2 - Parte 2
 
