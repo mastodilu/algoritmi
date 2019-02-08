@@ -1,3 +1,17 @@
+# Algoritmi
+
+I tried various algorithms.
+
+## What I learnt
+
+- (unit testing)
+- insertion sort
+- merge sort
+- dynamic programming
+- heap trees
+- heap sort
+- prim
+
 # Laboratorio per il corso di Algoritmi e Strutture Dati: informazioni generali
 
 Il presente documento riporta i testi degli esercizi da svolgere e consegnare al fine di poter sostenere la prova di laboratorio per il corso di Algoritmi e Strutture Dati, preceduti da alcune indicazioni e suggerimenti relativi allo svolgimento degli stessi.
