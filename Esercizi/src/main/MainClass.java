@@ -48,9 +48,9 @@ public class MainClass {
     public static void main(String[] args) {
         
         //start1();
-        //start2();
+        start2();
         //start3();
-        start4();
+        //start4();
 
         
     }
@@ -65,8 +65,8 @@ public class MainClass {
         
         System.out.println(al.size() + " elements in the array");
         
-        insertionSort();
-        //mergeSort();
+        //insertionSort();
+        mergeSort();
         //findSums();
     }
     
@@ -146,8 +146,8 @@ public class MainClass {
     private static void insertionSort() {
         System.out.println("Start sorting");
         InsertionSort<Long> is = new InsertionSort<Long>(al);
-        //is.sortAscending();
-        is.sortDescending();
+        is.sortAscending();
+        //is.sortDescending();
     }
     
     
